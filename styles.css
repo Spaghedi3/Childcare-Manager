@@ -2,7 +2,7 @@ nav ul {
     display: flex;
     list-style-type: none;
     justify-content: space-around;
-    background-color: pink;
+    background-color: #4CCD99;
     padding: 1em;
     margin: -0.5em;
   }
