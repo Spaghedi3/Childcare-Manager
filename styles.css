@@ -46,18 +46,53 @@ a {
   text-decoration: none;
   color: #007F73;
 }
+body {
+  overflow-x: hidden;
+}
+
+#logo{
+  width: 10em;
+  height: 5em;
+  padding: 0px;
+}
 
 nav ul {
   display: flex;
   list-style-type: none;
-  justify-content: space-around;
+  justify-content: center;
   background-color: #4CCD99;
-  padding: 1em;
+  padding: 0;
   margin: -0.5em;
+  border-bottom: 3px solid #007F73;
 }
 
 nav li {
   display: inline-flex;
   justify-content: space-around;
   text-align: center;
+  padding: 1em;
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+nav li:hover {
+  background-color: #AAD9BB;
+}
+
+@media only screen and (max-width: 968px) {
+
+  
+  nav li {
+    padding: 0.5em;
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav li {
+    padding: 0.3em;
+  }
 }
