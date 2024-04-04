@@ -46,15 +46,16 @@ a {
   text-decoration: none;
   color: #007F73;
 }
-body {
-  overflow-x: hidden;
+body, nav {
+  padding: 0;
+  margin: 0;
 }
 
-#logo{
+/* #logo {
   width: 10em;
   height: 5em;
-  padding: 0px;
-}
+  padding: 0; 
+} */
 
 nav ul {
   display: flex;
@@ -77,14 +78,6 @@ nav li {
 
 nav li:hover {
   background-color: #AAD9BB;
-}
-
-@media only screen and (max-width: 968px) {
-
-  
-  nav li {
-    padding: 0.5em;
-  }
 }
 
 @media only screen and (max-width: 568px) {
