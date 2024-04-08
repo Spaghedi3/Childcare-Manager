@@ -1,6 +1,7 @@
 body {
-  font-family: Arial;
+  font-family: 'segoe ui';
   background-color: #f2f2f2;
+  margin: 0;
 }
 
 .container {
@@ -44,15 +45,10 @@ input[type="submit"]:hover {
 
 a {
   text-decoration: none;
-  color: white;
+  color: #007F73;
 }
 * {
   box-sizing: border-box;
-}
-
-body {
-  margin: 0px;
-  font-family: 'segoe ui';
 }
 
 .nav {
@@ -64,6 +60,10 @@ body {
 
 .nav > .nav-header {
   display: inline;
+}
+
+.nav  a{
+  color: white;
 }
 
 .nav > .nav-header > .nav-title {
@@ -130,7 +130,7 @@ body {
     overflow-y: hidden;
     top: 50px;
     left: 0px;
-    height: calc(100vh - 50px); /* Adjust height to accommodate links */
+    height: calc(100vh - 50px); 
   }
   .nav > .nav-links > a {
     display: block;
@@ -140,7 +140,7 @@ body {
     text-decoration: none;
   }
   .nav > #nav-check:not(:checked) ~ .nav-links {
-    height: 0; /* Hide links by setting height to 0 */
+    height: 0; 
   }
   .nav > #nav-check:checked ~ .nav-links {
     overflow-y: auto;
