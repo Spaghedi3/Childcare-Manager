@@ -1,0 +1,68 @@
+.gallery {
+    display: grid;
+    grid-template-areas:
+        "nav nav nav"
+        "menu content content";
+    grid-template-columns: 200px 1fr 1fr;
+    grid-template-rows: auto 1fr;
+}
+
+.nav {
+    grid-area: nav;
+}
+
+.menu {
+    grid-area: menu;
+}
+
+.menu a {
+    display: block;
+    padding: 10px;
+    color: black;
+}
+
+.menu a:hover {
+    background-color: #FFF455;
+    color: black;
+}
+
+@media (orientation: portrait) {
+    .gallery {
+        grid-template-areas:
+            "nav nav nav"
+            "menu menu menu"
+            "content content content";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr;
+    }
+
+    .menu {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .menu a {
+        flex-grow: 1;
+        flex-basis: 0;
+        text-align: center;
+    }
+}
+
+a.current {
+    background-color: #FFC700;
+    color: black;
+}
+
+.content {
+    grid-area: content;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: minmax(100px, auto);
+    gap: 10px;
+}
+
+.content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
