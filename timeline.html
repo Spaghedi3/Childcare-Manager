@@ -2,57 +2,78 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Childcare Manager</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Childcare Manager</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div class="nav">
-        <input type="checkbox" id="nav-check">
-        <div class="nav-header">
-          <div class="nav-title">
-            <a href="homepage.html">Childcare Manager</a> 
-          </div>
-        </div>
-        <div class="nav-btn">
-          <label for="nav-check">
-            <span></span>
-            <span></span>
-            <span></span>
-          </label>
-        </div>
-
-        <div class="nav-links">
-          <a href="select_child.html">Select Child Profile</a>
-          <a href="schedule.html">Schedule</a>
-          <a href="medical_info.html">Medical Info</a>
-          <a href="gallery.html">Gallery</a>
-          <a href="relationships.html">Relationships</a>
-          <a href="timeline.html">Timeline</a>
-          <a href="profile.html">Profile</a>
-
-        </div>
+  <div class="nav">
+    <input type="checkbox" id="nav-check">
+    <div class="nav-header">
+      <div class="nav-title">
+        <a href="homepage.html">Childcare Manager</a>
       </div>
+    </div>
+    <div class="nav-btn">
+      <label for="nav-check">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
 
+    <div class="nav-links">
+      <a href="select_child.html">Select Child Profile</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="medical_info.html">Medical Info</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="relationships.html">Relationships</a>
+      <a href="timeline.html">Timeline</a>
+      <a href="profile.html">Profile</a>
+
+    </div>
+  </div>
+
+  <div class="timeline-container container">
     <h1>Timeline</h1>
     <p>They grow up so fast!</p>
-
-    <h3>10.10.2023</h3>
-    <img src="images/baby.jpg" alt="child_picture">
-    <p>Description of the memory</p>
-    <h3>10.10.2025</h3>
-    <img src="images/3yr.jpg" alt="child_picture">
-    <p>Description of the memory</p>
-    <h3>10.10.2027</h3>
-    <img src="images/5yr.jpg" alt="child_picture">
-    <p>Description of the memory</p>
-    <h3>10.10.2037</h3>
-    <img src="images/10yr.jpg" alt="child_picture">
-    <p>Description of the memory</p>
-    <br>
     <button id="addMemoryButton">Add memory</button>
+  </div>
+
+  <div class="timeline-entry container">
+    <h3>10.10.2023</h3>
+    <img src="images/baby.jpg" class="child_picture" alt="child_picture">
+    <p>Description of the memory</p>
+    <button class="edit-button">Edit</button>
+    <button class="delete-button">Delete</button>
+  </div>
+
+  <div class="timeline-entry container">
+    <h3>10.10.2025</h3>
+    <img src="images/3yr.jpg" class="child_picture" alt="child_picture">
+    <p>Description of the memory</p>
+    <button class="edit-button">Edit</button>
+    <button class="delete-button">Delete</button>
+  </div>
+
+  <div class="timeline-entry container">
+    <h3>10.10.2027</h3>
+    <img src="images/5yr.jpg" class="child_picture" alt="child_picture">
+    <p>Description of the memory</p>
+    <button class="edit-button">Edit</button>
+    <button class="delete-button">Delete</button>
+  </div>
+
+  <div class="timeline-entry container">
+    <h3>10.10.2037</h3>
+    <img src="images/10yr.jpg" class="child_picture" alt="child_picture">
+    <p>Description of the memory</p>
+    <button class="edit-button">Edit</button>
+    <button class="delete-button">Delete</button>
+  </div>
+
 </body>
 
 </html>

@@ -13,13 +13,16 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.medical_info_container{
+.medical_info_container, .relationship-container, .timeline-container, .timeline-entry{
   max-width: 600px;
-  margin: 50px auto;
-  padding: 40px;
-  background-color: #AAD9BB;
-  border-radius: 30px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* .child_picture{
+ 
+} */
+
+.relationship-header{
+  padding-left: 1em;
 }
 
 label {
