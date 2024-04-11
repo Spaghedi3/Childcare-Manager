@@ -2,6 +2,7 @@ body {
   font-family: 'segoe ui';
   background-color: #4CCD99;
   margin: 0;
+  padding-top: 3em;
 }
 
 .container {
@@ -83,6 +84,7 @@ button {
   touch-action: manipulation;
   vertical-align: top;
   white-space: nowrap;
+  z-index: 0;
 }
 
 button:hover {
@@ -117,6 +119,7 @@ a {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1000;
 }
 
 .nav > .nav-header {
