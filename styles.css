@@ -36,7 +36,7 @@ label {
   box-sizing: border-box;
 }
 
-input[type="submit"] {
+input[type="submit"], .btn {
   width: 100%;
   background-color: #007F73;
   color: #fff;
@@ -47,7 +47,7 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-input[type="submit"]:hover {
+input[type="submit"]:hover, .btn {
   background-color: #007f72dd;
 }
 
