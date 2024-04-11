@@ -36,7 +36,7 @@ label {
   box-sizing: border-box;
 }
 
-input[type="submit"], .btn {
+input[type="submit"] {
   width: 100%;
   background-color: #007F73;
   color: #fff;
@@ -47,7 +47,7 @@ input[type="submit"], .btn {
   cursor: pointer;
 }
 
-input[type="submit"]:hover, .btn {
+input[type="submit"]:hover {
   background-color: #007f72dd;
 }
 
@@ -63,13 +63,13 @@ button {
   cursor: pointer;
   display: inline-block;
   font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: normal;
   line-height: 1.5;
   outline: none;
   overflow: hidden;
-  padding: 13px 20px;
+  padding: 8px 20px;
   position: relative;
   text-align: center;
   text-decoration: none;
