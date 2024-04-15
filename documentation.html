@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Requirements Specification - Childcare Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        h1 {
+            font-size: 2em;
+        }
+
+        h2 {
+            font-size: 1.5em;
+        }
+
+        h3 {
+            font-size: 1.2em;
+        }
+
+        h4 {
+            font-size: 1.1em;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        ul {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section>
+        <h1>Software Requirements Specification (SRS)</h1>
+        <h2>Childcare Manager</h2>
+
+        <h3>1. Introduction</h3>
+        <h4>1.1 Purpose</h4>
+        <p>The purpose of the Childcare Manager software is to assist parents, couples, and caretakers in managing
+            childcare tasks and tracking important developmental milestones of children.</p>
+
+        <h4>1.2 References</h4>
+        <ol>
+            <li> <a href="https://www.mockplus.com/blog/post/ui-style-guide">
+                    https://www.mockplus.com/blog/post/ui-style-guide </a>
+            </li>
+            <li> <a href="https://colorhunt.co/palette/007f734ccd99ffc700fff455">
+                    https://colorhunt.co/palette/007f734ccd99ffc700fff455</a>
+            </li>
+            <li> <a href=" https://getcssscan.com/css-buttons-examples">
+                    https://getcssscan.com/css-buttons-examples</a>
+            </li>
+        </ol>
+
+        <h4>1.3 Product Scope</h4>
+        <p>The Childcare Manager application will include features such as managing feeding and sleep schedules,
+            tracking developmental milestones through multimedia resources (photos, videos, audio recordings),
+            maintaining medical history, and facilitating social sharing of significant moments. The system will provide
+            a chronological view of captured moments for each child, with options for social sharing via social
+            applications or RSS news feeds. Additionally, the system functionalities will be exposed through a
+            REST/GraphQL Web API.</p>
+
+
+        <h3>2. Overall Description</h3>
+        <h4>2.1 Product Functions</h4>
+        <p>The major functions of the Childcare Manager application include:</p>
+        <ul>
+            <li>Feeding schedule management</li>
+            <li>Sleep schedule management</li>
+            <li>Multimedia resource management for child development tracking</li>
+            <li>Medical history recording</li>
+            <li>Relationship tracking with other children</li>
+            <li>Chronological view of important moments</li>
+            <li>Social sharing via social applications or RSS news feeds</li>
+            <li>Exposing functionalities through a REST/GraphQL Web API</li>
+        </ul>
+
+        <h4>2.2 User Classes and Characteristics</h4>
+        <p>User classes for the Childcare Manager application include parents, couples, and caretakers. Users may vary
+            in technical expertise and familiarity with childcare management software.</p>
+
+        <h4>2.3 Operating Environment</h4>
+        <p>The Childcare Manager application will operate on various platforms, including web browsers, mobile devices
+            (iOS and Android), and desktop computers. It will require internet connectivity for social sharing features
+            and accessing multimedia resources.</p>
+
+        <h4>2.4 User Documentation</h4>
+        <p>User documentation will include user manuals, on-line help, and tutorials. The delivery format will include
+            web-based resources accessible through the application interface.</p>
+
+        <h4>2.5 Assumptions and Dependencies</h4>
+        <p><strong>Assumptions:</strong></p>
+        <ul>
+            <li>Users will have access to internet connectivity for social sharing features.</li>
+        </ul>
+        <p><strong>Dependencies:</strong></p>
+        <ul>
+            <li>The application may depend on third-party services for social sharing functionality.</li>
+        </ul>
+
+        <h3>3. External Interface Requirements</h3>
+        <h4>3.1 User Interfaces</h4>
+        <p>The user interface will be intuitive and user-friendly, featuring screens for feeding schedule management,
+            sleep schedule management, multimedia resource management, medical history recording, relationship tracking,
+            and social sharing.</p>
+
+        <h4>3.2 Hardware Interfaces</h4>
+        <p>The application will interface with standard hardware components of web browsers on mobile devices, and desktop
+            computers.</p>
+
+        <h4>3.3 Software Interfaces</h4>
+        <p>The application will interface with third-party social applications for social sharing functionality. It will
+            also expose functionalities through a REST/GraphQL Web API.</p>
+
+        <h4>3.4 Communications Interfaces</h4>
+        <p>Communication interfaces will include internet connectivity for social sharing features and accessing
+            multimedia resources.</p>
+
+        <h3>4. System Features</h3>
+        <h4>4.1 Feeding and sleeping Schedule Management</h4>
+        <p><strong>4.1.1 Description and Priority</strong></p>
+        <p>The system allows users to record and manage feeding and sleeping schedules for children. Priority: High.</p>
+        <p><strong>4.1.2 Stimulus/Response Sequences</strong></p>
+        <p>Users input feeding and sleeping times. The system records and displays the feeding and sleeping schedule.
+        </p>
+        <p><strong>4.1.3 Functional Requirements</strong></p>
+        <ul>
+            <li>The system provides reminders for upcoming feedings and sleep times.</li>
+        </ul>
+
+        <h4>4.2 Gallery and timeline management</h4>
+        <p><strong>4.2.1 Description and Priority</strong></p>
+        <p>The system allows users to add and manage images, videos and other media types of content for children.
+            Priority: High</p>
+        <p>These media files can be shared on social media.</p>
+        <p><strong>4.2.2 Stimulus/Response Sequences</strong></p>
+        <p>Users input media files. The system records and displays them in the timeline and gallery. </p>
+        <p>The timeline will offer users a friendly interface for viewing, adding and deleting certain memories.
+            Additionally these memories will be showcased in a chronological order.</p>
+        <p></p>
+        <p><strong>4.2.3 Functional Requirements</strong></p>
+        <p>TBD</p>
+        <h4>4.3 Medical Info Management</h4>
+        <p><strong>4.3.1 Description and Priority</strong></p>
+        <p>The system allows users to record and edit information about the child's medical information. Priority: High.</p>
+        <p><strong>4.3.2 Stimulus/Response Sequences</strong></p>
+        <p>Users input critical medical information. The system records and displays the information.
+        </p>
+        <p><strong>4.3.3 Functional Requirements</strong></p>
+        <p>TBD</p>
+        <p><strong>4.4 Relationships Management</strong></p>
+        <p>Similar to Medical Info Management</p>
+        <h3>5. Other Nonfunctional Requirements</h3>
+
+        <h4>5.2 Safety Requirements</h4>
+        <p>User data should be securely stored and encrypted to protect privacy.</p>
+        <p>Data can also be exported for migration to another platform or for preservation/backups</p>
+
+        <h4>5.3 Security Requirements</h4>
+        <p>User authentication is required for accessing sensitive information.</p>
+
+        <h4>5.4 Software Quality Attributes</h4>
+        <p>The application should be reliable, user-friendly, and scalable.</p>
+
+        <h4>5.5 Business Rules</h4>
+        <p>Users can only access information related to their own children.</p>
+    </section>
+
+</body>
+
+</html>
