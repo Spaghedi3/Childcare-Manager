@@ -65,8 +65,9 @@ body {
   outline: none;
   margin-top: 20px;
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  justify-content: center; 
+  align-items: center; 
+  padding-bottom: 10px;
 }
 
 .add-child-button:hover {
