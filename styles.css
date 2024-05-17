@@ -214,6 +214,11 @@ a {
   display: none;
 }
 
+img{
+  width: 100%;
+  height: auto;
+}
+
 @media (max-width:990px) {
   .nav > .nav-btn {
     display: inline-block;
@@ -261,4 +266,8 @@ a {
   .nav > #nav-check:checked ~ .nav-links {
     overflow-y: auto;
   }
+  /* img{
+    width: 100%;
+    height: auto;
+  } */
 }
