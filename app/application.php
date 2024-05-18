@@ -1,27 +1,36 @@
 <?php
 
-namespace App;
+ini_set('include_path', dirname(__FILE__) . '/controllers');
+
+require_once 'HomeController.php';
+require_once 'LoginController.php';
+require_once 'RegisterController.php';
+require_once 'GalleryController.php';
+require_once 'MedicalController.php';
+require_once 'ProfileController.php';
+require_once 'RelationshipsController.php';
+require_once 'ScheduleController.php';
+require_once 'SelectController.php';
+require_once 'TimelineController.php';
 
 class Application
 {
     public function router()
     {
-        console.log("router");
         $route = $_SERVER['REQUEST_URI'];
 
         // Map routes to controller and action methods
         $routes = [
             '/home' => [HomeController::class, 'index'],
-            '/login' => [LoginController::class, 'LoginController'],
-            '/register' => [RegisterController::class, 'Create_AccountController'],
-            '/gallery' => [GalleryController::class, 'GalleryController'],
-            '/medical' => [MedicalController::class, 'MedicalController'],
-            '/profile' => [ProfileController::class, 'ProfileController'],
-            '/relationships' => [RelationshipsController::class, 'RelationshipsController'],
-            '/schedule' => [ScheduleController::class, 'ScheduleController'],
-            '/select' => [SelectController::class, 'SelectController'],
-            '/timeline' => [TimelineController::class, 'TimelineController'],
-
+            '/login' => [LoginController::class, 'index'],
+            '/register' => [RegisterController::class, 'index'],
+            '/gallery' => [GalleryController::class, 'index'],
+            '/medical' => [MedicalController::class, 'index'],
+            '/profile' => [ProfileController::class, 'index'],
+            '/relationships' => [RelationshipsController::class, 'index'],
+            '/schedule' => [ScheduleController::class, 'index'],
+            '/select' => [SelectController::class, 'index'],
+            '/timeline' => [TimelineController::class, 'index'],
         ];
 
         if (isset($routes[$route])) {
@@ -29,7 +38,7 @@ class Application
             $controller = new $controller();
             $controller->$action();
         } else {
-            // Handle non-existent routes (e.g., display 404 page)
+            // Handle non-existent routes
             echo "404 - Page not found";
         }
     }

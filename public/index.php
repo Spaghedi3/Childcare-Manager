@@ -1,5 +1,6 @@
 <?php
-header("Location: Homepage/homepage.html");
-require_once 'app/controllers/HomeController.php';
-exit;
-?>
+
+require_once('../app/application.php');
+
+$app = new Application();
+$app->router();
