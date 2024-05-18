@@ -2,41 +2,10 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Childcare Manager</title>
-    <link rel="stylesheet" href="../../../css/styles.css">
-    <link rel="icon" href="../Images/logo.ico" type="image/x-icon">
+    <title>Relationships</title>
 </head>
 
 <body>
-    <div class="nav">
-        <input type="checkbox" id="nav-check">
-        <div class="nav-header">
-            <div class="nav-title">
-                <a href="../Homepage/homepage.html">Childcare Manager</a>
-            </div>
-        </div>
-        <div class="nav-btn">
-            <label for="nav-check">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-        </div>
-
-        <div class="nav-links">
-            <a href="../Select_child/select_child.html">Select Child Profile</a>
-            <a href="../Schedule/schedule.html">Schedule</a>
-            <a href="../Medical_info/medical_info.html">Medical Info</a>
-            <a href="../Gallery/gallery.html">Gallery</a>
-            <a href="../Relationships/relationships.html">Relationships</a>
-            <a href="../Timeline/timeline.html">Timeline</a>
-            <a href="../Profile/profile.html">Profile</a>
-
-        </div>
-    </div>
-
     <div class="relationship-container container">
         <h1>Relationships</h1>
         <p>Who's who in your child's life?</p>

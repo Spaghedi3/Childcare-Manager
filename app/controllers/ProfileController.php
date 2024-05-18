@@ -2,6 +2,6 @@
 
 class ProfileController {
     public function index() {
-        require_once '../app/views/Profile/profile.html';
+        require_once '../app/views/Profile/profile.php';
     }
 }

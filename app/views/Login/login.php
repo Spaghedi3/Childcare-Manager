@@ -2,10 +2,6 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../css/styles.css">
-    <link rel="icon" href="../images/logo.ico" type="image/x-icon">
     <title>Login</title>
 </head>
 
@@ -30,7 +26,7 @@
         <div class="container">
             <span class="psw"> <a href="#">Forgot password?</a></span>
             <br>
-            <a href="../Create_account/create-account.html">Don't have an account?</a>
+            <a href="/register">Don't have an account?</a>
         </div>
     </form>
 </body>

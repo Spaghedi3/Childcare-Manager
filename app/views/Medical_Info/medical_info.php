@@ -2,40 +2,10 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medical Info</title>
-    <link rel="stylesheet" href="../../../css/styles.css">
-    <link rel="icon" href="../Images/logo.ico" type="image/x-icon">
 </head>
 
 <body>
-    <div class="nav">
-        <input type="checkbox" id="nav-check">
-        <div class="nav-header">
-            <div class="nav-title">
-                <a href="../Homepage/Homepage.html">Childcare Manager</a>
-            </div>
-        </div>
-        <div class="nav-btn">
-            <label for="nav-check">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-        </div>
-
-        <div class="nav-links">
-            <a href="../Select_child/Select_child.html">Select Child Profile</a>
-            <a href="../Schedule/Schedule.html">Schedule</a>
-            <a href="../Medical_info/Medical_info.html">Medical Info</a>
-            <a href="../Gallery/Gallery.html">Gallery</a>
-            <a href="../Relationships/Relationships.html">Relationships</a>
-            <a href="../Timeline/Timeline.html">Timeline</a>
-            <a href="../Profile/Profile.html">Profile</a>
-        </div>
-    </div>
-
     <div class="container medical_info_container">
         <h1>Medical Info</h1>
         <p>Welcome to [Child's Name]'s Medical Information Page. This page is intended to provide important medical details for [Child's Name] to ensure their safety and well-being in various situations.</p>

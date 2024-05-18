@@ -2,6 +2,6 @@
 
 class RegisterController {
     public function index() {
-        require_once '../app/views/Register/register.html';
+        require_once '../app/views/Register/register.php';
     }
 }

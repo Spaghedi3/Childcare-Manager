@@ -2,6 +2,6 @@
 
 class GalleryController {
     public function index() {
-        require_once '../app/views/Gallery/gallery.html';
+        require_once '../app/views/Gallery/gallery.php';
     }
 }

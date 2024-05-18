@@ -2,6 +2,6 @@
 
 class HomeController {
     public function index() {
-        require_once '../app/views/Homepage/homepage.html';
+        require_once '../app/views/Homepage/homepage.php';
     }
 }
