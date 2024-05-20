@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <title>Childcare Manager</title>
-</head>
-
-<body>
   <div class="timeline-container container">
     <h1>Timeline</h1>
     <p>They grow up so fast!</p>
@@ -47,7 +39,3 @@
     <button class="share-button">Share</button>
     <button class="delete-button">Delete</button>
   </div>
-
-</body>
-
-</html>

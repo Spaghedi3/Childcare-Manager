@@ -1,9 +1,3 @@
-<head>
-    <link rel="stylesheet" href="css/gallery.css">
-    <title>Gallery</title>
-</head>
-
-<body>
     <div class="gallery">
         <div class="menu">
             <a class="current" href="../Gallery/gallery.html">Photos</a>
@@ -19,4 +13,3 @@
             <img src="app/views/images/10yr.jpg" alt="10yr">
         </div>
     </div>
-</body>

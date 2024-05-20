@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Account</title>
-    <link rel="stylesheet" href="../../../css/styles.css"> 
-    <link rel="icon" href="../images/logo.ico" type="image/x-icon">
-</head>
-
-<body>
     <div class="container">
         <h1>Create Account</h1>
         <form action="#" method="post">
@@ -32,6 +20,3 @@
             <input type="submit" value="Create Account">
         </form>
     </div>
-</body>
-
-</html>

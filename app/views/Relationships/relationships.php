@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>Relationships</title>
-</head>
-
-<body>
     <div class="relationship-container container">
         <h1>Relationships</h1>
         <p>Who's who in your child's life?</p>
@@ -54,6 +46,3 @@
             <button>Edit</button>
         </div>
     </div>
-</body>
-
-</html>

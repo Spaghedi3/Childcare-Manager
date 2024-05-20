@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <link rel="stylesheet" href="css/schedule.css">
-    <title>Schedule</title>
-</head>
-
-<body>
     <div class="schedule">
         <div class="add-event">
             <h1>Schedule</h1>
@@ -29,6 +20,3 @@
             <p>Go to the aquarium</p>
         </div>
     </div>
-</body>
-
-</html>

@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>Login</title>
-</head>
-
-<body>
     <form action="#" method="post">
         <div class="imgcontainer"></div>
         <div class="container">
@@ -29,6 +21,3 @@
             <a href="/register">Don't have an account?</a>
         </div>
     </form>
-</body>
-
-</html>

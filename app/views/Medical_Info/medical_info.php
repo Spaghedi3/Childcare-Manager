@@ -1,27 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>Medical Info</title>
-</head>
-
-<body>
-    <div class="container medical_info_container">
-        <h1>Medical Info</h1>
-        <p>Welcome to [Child's Name]'s Medical Information Page. This page is intended to provide important medical details for [Child's Name] to ensure their safety and well-being in various situations.</p>
-    </div>
-
-    <div class="container medical_info_container">
-        <div id="basic_info">
-            <h2>Basic Information</h2>
-            <p>Full Name: [Child's Name]</p>
-            <p>Age: [Child's age]</p>
-            <p>Date of Birth: [Child's Date of Birth]</p>
-            <p>Parents Names: [Child's Parents Names]</p>
-            <button>Edit</button>
-        </div>
-    </div>
-    <div class="container medical_info_container">
+   <div class="container medical_info_container">
         <h1>Medical Info</h1>
         <p>Welcome to [Child's Name]'s Medical Information Page. This page is intended to provide important medical details for [Child's Name] to ensure their safety and well-being in various situations.</p>
     </div>
@@ -75,4 +52,7 @@
 
     <div class="container medical_info_container">
         <h2>Medical History</h2>
-        <p>Include any additional medical information that may
+        <p>Include any additional medical information that may be relevant to the child's health and well-being. This
+            could include past illnesses, surgeries, or other medical events that may impact their care.</p>
+      <button>Edit</button>  
+    </div>
