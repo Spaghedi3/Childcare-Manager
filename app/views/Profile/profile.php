@@ -17,6 +17,6 @@
             <a class="btn" href="#">Change Password</a>
 
         </div>
-        <a class="btn" href="#">Logout</a>
+        <a class="btn" href="/logout">Logout</a>
         <a class="btn" href="#">Delete account</a>
     </div>

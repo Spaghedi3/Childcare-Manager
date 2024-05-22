@@ -14,4 +14,10 @@ class LoginController
     {
         require_once '../app/models/login/loginModel.php';
     }
+
+    public function logout()
+    {
+        setcookie('userId', '', time() - 3600, '/');
+        header('Location: /home');
+    }
 }
