@@ -17,13 +17,14 @@ class Application
 {
     public function router()
     {
-        $route = $_SERVER['REQUEST_URI'];
+        $route = strtok($_SERVER['REQUEST_URI'], '?'); // Get the route without query parameters
 
         // Map routes to controller and action methods
         $routes = [
             '/home' => [HomeController::class, 'index'],
             '/login' => [LoginController::class, 'index'],
             '/register' => [RegisterController::class, 'index'],
+            '/registerTest' => [RegisterController::class, 'register'],
             '/gallery' => [GalleryController::class, 'index'],
             '/medical' => [MedicalController::class, 'index'],
             '/profile' => [ProfileController::class, 'index'],

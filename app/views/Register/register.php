@@ -1,6 +1,6 @@
     <div class="container">
         <h1>Create Account</h1>
-        <form action="#" method="post">
+        <form action="/registerTest" method="post">
             <label for="username">Username:</label>
             <input class="create-account" type="text" id="username" name="username" placeholder="Enter username" required>
             <br>

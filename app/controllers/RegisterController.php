@@ -9,4 +9,8 @@ class RegisterController
         require_once '../app/views/Register/register.php';
         require_once '../app/views/footer.php';
     }
+    public function register()
+    {
+        require_once '../app/models/register.php';
+    }
 }
