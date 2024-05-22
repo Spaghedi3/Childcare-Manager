@@ -18,7 +18,7 @@ if (isset($_GET['message'])) {
         <input type="submit" value="Login">
         <br>
         <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
+            <input type="checkbox" name="remember"> Remember me
         </label>
     </div>
 

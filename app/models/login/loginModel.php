@@ -29,7 +29,12 @@ if (mysqli_num_rows($result) > 0) {
         // }
         
         $cookie_value = $user['id'];
-        setcookie($cookie_name, $cookie_value, time() + (33600 * 24), "/");
+        if(isset($_REQUEST["remember"]) && $_REQUEST["remember"] == "on") {
+            setcookie($cookie_name, $cookie_value, time() + (3600 * 24 * 7 * 12), "/"); // 12 weeks
+        }
+        else {
+            setcookie($cookie_name, $cookie_value, 0, "/");
+        }
        // setcookie('childId  ', 1);   DE PUS IN select   
 
         header('Location: /select', TRUE, 303);
