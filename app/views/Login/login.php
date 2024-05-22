@@ -5,15 +5,15 @@ if (isset($_GET['message'])) {
 }
 ?>
 
-<form action="#" method="post">
+<form action="/loginTest" method="post">
     <div class="imgcontainer"></div>
     <div class="container">
         <h1 id="login">Log into your account</h1>
-        <label for="uname"><b>Username</b></label>
-        <input class="login" type="text" placeholder="Enter Username" id="uname" name="uname" required>
+        <label for="username"><b>Username</b></label>
+        <input class="login" type="text" placeholder="Enter Username" id="username" name="username" required>
         <br>
-        <label for="psw"><b>Password</b></label>
-        <input class="login" type="password" placeholder="Enter Password" id="psw" name="psw" required>
+        <label for="password"><b>Password</b></label>
+        <input class="login" type="password" placeholder="Enter Password" id="password" name="password" required>
         <br>
         <input type="submit" value="Login">
         <br>

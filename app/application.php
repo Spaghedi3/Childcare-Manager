@@ -23,6 +23,7 @@ class Application
         $routes = [
             '/home' => [HomeController::class, 'index'],
             '/login' => [LoginController::class, 'index'],
+            '/loginTest' => [LoginController::class, 'login'],
             '/register' => [RegisterController::class, 'index'],
             '/registerTest' => [RegisterController::class, 'register'],
             '/gallery' => [GalleryController::class, 'index'],

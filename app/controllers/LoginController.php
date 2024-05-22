@@ -9,4 +9,9 @@ class LoginController
         require_once '../app/views/Login/login.php';
         require_once '../app/views/footer.php';
     }
+
+    public function login()
+    {
+        require_once '../app/models/login/loginModel.php';
+    }
 }

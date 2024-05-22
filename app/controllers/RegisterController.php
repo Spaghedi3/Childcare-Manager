@@ -11,6 +11,6 @@ class RegisterController
     }
     public function register()
     {
-        require_once '../app/models/register.php';
+        require_once '../app/models/register/registerModel.php';
     }
 }
