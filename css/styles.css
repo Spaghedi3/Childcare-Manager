@@ -82,7 +82,8 @@ label {
 }
 
 .create-account,
-.login {
+.login,
+.edit {
   width: 100%;
   padding: 10px;
   margin: 8px 0;
