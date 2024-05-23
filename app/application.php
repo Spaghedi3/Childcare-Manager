@@ -12,6 +12,7 @@ require_once 'RelationshipsController.php';
 require_once 'ScheduleController.php';
 require_once 'SelectController.php';
 require_once 'TimelineController.php';
+require_once 'ChildProfileController.php'; 
 
 class Application
 {
@@ -22,7 +23,6 @@ class Application
         // Map routes to controller and action methods
 
         $privateRoutes = [
-            '/home' => [HomeController::class, 'index'],
             '/gallery' => [GalleryController::class, 'index'],
             '/medical' => [MedicalController::class, 'index'],
             '/profile' => [ProfileController::class, 'index'],
@@ -31,6 +31,7 @@ class Application
             '/select' => [SelectController::class, 'index'],
             '/timeline' => [TimelineController::class, 'index'],
             '/logout' => [LoginController::class, 'logout'],
+            '/ChildProfile' => [ChildProfileController::class, 'index'],
         ];
 
         $publicRoutes = [

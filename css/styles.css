@@ -1,3 +1,5 @@
+/* styles.css */
+
 body {
   font-family: 'segoe ui';
   background-color: #4CCD99;
@@ -18,9 +20,6 @@ body {
   max-width: 600px;
 }
 
-/* .child_picture{
- 
-} */
 
 .select-child-container {
   display: flex;
@@ -215,8 +214,15 @@ a {
 }
 
 img{
-  width: 100%;
-  height: auto;
+  /* width: 100%;
+  height: auto; */
+  width: 150px;
+    height: 150px;
+}
+
+.child-img-div{
+  float: left;
+  margin-right: 20px;
 }
 
 @media (max-width:990px) {
@@ -255,7 +261,8 @@ img{
   }
   .nav > .nav-links > a {
     display: block;
-    width: 100%;
+    width: 
+    100%;
     padding: 13px 10px;
     color: #efefef;
     text-decoration: none;
@@ -266,8 +273,4 @@ img{
   .nav > #nav-check:checked ~ .nav-links {
     overflow-y: auto;
   }
-  /* img{
-    width: 100%;
-    height: auto;
-  } */
 }

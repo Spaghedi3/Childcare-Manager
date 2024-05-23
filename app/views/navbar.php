@@ -2,7 +2,7 @@
         <input type="checkbox" id="nav-check">
         <div class="nav-header">
             <div class="nav-title">
-                <a href="/home">Childcare Manager</a>
+                <a href="/ChildProfile">Childcare Manager</a>
             </div>
         </div>
         <div class="nav-btn">
