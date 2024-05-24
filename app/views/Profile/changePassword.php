@@ -9,5 +9,6 @@
                 <label for="confirmPassword">Confirm password:</label>
                 <input class="edit" type="text" id="confirmPassword" name="confirmPassword">
 				<input type="submit" value="Confirm">
+			</form>
 		</div>
 	</div>

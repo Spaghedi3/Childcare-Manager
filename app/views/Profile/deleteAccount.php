@@ -6,5 +6,6 @@
             <input class="edit" type="text" id="password" name="password">
             <p>Are you sure you want to delete your account?</p>
             <input type="submit" value="Confirm">
+        </form>
     </div>
 </div>

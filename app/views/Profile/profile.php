@@ -26,24 +26,3 @@
 		<a class="btn" href="/profile?form=deleteAccount">Delete account</a>
 		<a class="btn" href="#">Export data</a>
 	</div>
-
-	<?php
-	if (isset($_GET['form'])) {
-		$form = $_GET['form'];
-		switch ($form) {
-			case 'changeUsername':
-				require_once '../app/views/Profile/changeUsername.php';
-				break;
-			case 'changeEmail':
-				require_once '../app/views/Profile/changeEmail.php';
-				break;
-			case 'changePassword':
-				require_once '../app/views/Profile/changePassword.php';
-				break;
-			case 'deleteAccount':
-				require_once '../app/views/Profile/deleteAccount.php';
-				break;
-		}
-	}
-	?>
-</div>
