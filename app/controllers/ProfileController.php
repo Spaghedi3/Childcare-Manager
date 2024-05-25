@@ -4,8 +4,8 @@ class ProfileController
 {
     public function index()
     {
-        require_once '../app/models/profile/profile.php';
-        
+        require_once '../app/models/profile/profileModel.php';
+
         require_once '../app/views/header.php';
         require_once '../app/views/Profile/header.php';
         require_once '../app/views/navbar.php';
@@ -28,5 +28,10 @@ class ProfileController
             }
         }
         require_once '../app/views/Profile/footer.php';
+    }
+
+    public function edit()
+    {
+        require_once '../app/models/profile/formModel.php';
     }
 }

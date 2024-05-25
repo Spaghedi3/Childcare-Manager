@@ -26,6 +26,7 @@ class Application
             '/gallery' => [GalleryController::class, 'index'],
             '/medical' => [MedicalController::class, 'index'],
             '/profile' => [ProfileController::class, 'index'],
+            '/profileEdit' => [ProfileController::class, 'edit'],
             '/relationships' => [RelationshipsController::class, 'index'],
             '/schedule' => [ScheduleController::class, 'index'],
             '/select' => [SelectController::class, 'index'],

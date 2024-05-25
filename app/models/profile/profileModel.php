@@ -10,3 +10,5 @@ $result = mysqli_fetch_assoc($result);
 
 $username = $result['username'];
 $email = $result['email'];
+
+mysqli_close($connection);
