@@ -16,10 +16,9 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.medical_info_container, .relationship-container, .timeline-container, .timeline-entry{
+.medical_info_container, .relationship-container, .timeline-container, .timeline-entry {
   max-width: 600px;
 }
-
 
 .select-child-container {
   display: flex;
@@ -39,15 +38,6 @@ body {
   justify-content: center;
 }
 
-.select-child-container .child-profile-item {
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin: 10px;
-  cursor: pointer;
-}
-
 .select-child-container .child-profile-item:hover {
   background-color: #f0f0f0;
 }
@@ -64,8 +54,8 @@ body {
   outline: none;
   margin-top: 20px;
   display: flex;
-  justify-content: center; 
-  align-items: center; 
+  justify-content: center;
+  align-items: center;
   padding-bottom: 10px;
 }
 
@@ -73,6 +63,68 @@ body {
   background-color: #00594D;
 }
 
+.child-profile-item {
+  background-color: #ffffff;
+  height: auto;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+.child-profile-item h3 {
+  margin-bottom: 5px;
+}
+
+.child-img-div {
+  margin-bottom: 10px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+ .edit-name{
+  margin-bottom: 10px;
+}
+
+.buttons button {
+  font-size: 12px;
+  padding: 5px 10px;
+  margin-right: 5px;
+}
+
+.buttons button:last-child {
+  margin-right: 0;
+}
+
+.delete-child-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: white;
+  color: red;
+  width: 10px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0;
+}
+
+.delete-child-button:hover {
+  background-color: gray;
+}
 .relationship-header{
   padding-left: 1em;
 }
@@ -214,15 +266,13 @@ a {
 }
 
 img{
-  /* width: 100%;
-  height: auto; */
-  width: 150px;
-    height: 150px;
+  width: 100%;
+  height: auto;
 }
 
-.child-img-div{
-  float: left;
-  margin-right: 20px;
+.child-img-div > img{
+  width: 150px;
+  height: 150px;
 }
 
 @media (max-width:990px) {
