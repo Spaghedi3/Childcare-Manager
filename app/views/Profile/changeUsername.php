@@ -3,7 +3,7 @@
     <div style="padding: 20px;">
         <form action="/profileEdit" method="POST">
             <label for="username">New username:</label>
-            <input class="edit" type="text" id="username" name="username" value="<?php echo $username; ?>">
+            <input class="edit" type="text" id="username" name="username" value="<?php echo $username; ?>" required>
             <input type="submit" value="Confirm">
         </form>
     </div>
