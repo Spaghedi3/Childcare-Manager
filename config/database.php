@@ -48,7 +48,8 @@ if ($conn->query($sql) === TRUE) {
 $sql = "CREATE TABLE Children (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(30) NOT NULL,
-    birth_date DATE NOT NULL
+    birth_date DATE NOT NULL,
+    profile_picture_path VARCHAR(255)
 )";
 
 if ($conn->query($sql) === TRUE) {
