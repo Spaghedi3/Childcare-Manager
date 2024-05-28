@@ -8,12 +8,12 @@
 		<div class="info-container">
 			<p>
 				<span class="label">Username:</span>
-				<span class="value"><?php echo $username; ?></span>
+				<span class="value" id="userValue"><?php echo $username; ?></span>
 				<a href="/profile?form=changeUsername">Edit</a>
 			</p>
 			<p>
 				<span class="label">Email:</span>
-				<span class="value"><?php echo $email; ?></span>
+				<span class="value" id="emailValue"><?php echo $email; ?></span>
 				<a href="/profile?form=changeEmail">Edit</a>
 			</p>
 			<a class="btn" href="/profile?form=changePassword">Change Password</a>

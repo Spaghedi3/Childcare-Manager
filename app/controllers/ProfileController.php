@@ -30,8 +30,18 @@ class ProfileController
         require_once '../app/views/Profile/footer.php';
     }
 
-    public function edit()
+    public function changeUsername()
     {
-        require_once '../app/models/profile/formModel.php';
+        require_once '../app/models/profile/changeUsername.php';
+    }
+
+    public function changeEmail()
+    {
+        require_once '../app/models/profile/changeEmail.php';
+    }
+
+    public function changePassword()
+    {
+        require_once '../app/models/profile/changePassword.php';
     }
 }

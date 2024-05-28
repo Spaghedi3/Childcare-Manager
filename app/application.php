@@ -21,12 +21,10 @@ class Application
         $route = strtok($_SERVER['REQUEST_URI'], '?'); // Get the route without query parameters
 
         // Map routes to controller and action methods
-
         $privateRoutes = [
             '/gallery' => [GalleryController::class, 'index'],
             '/medical' => [MedicalController::class, 'index'],
             '/profile' => [ProfileController::class, 'index'],
-            '/profileEdit' => [ProfileController::class, 'edit'],
             '/relationships' => [RelationshipsController::class, 'index'],
             '/schedule' => [ScheduleController::class, 'index'],
             '/select' => [SelectController::class, 'index'],
@@ -38,12 +36,25 @@ class Application
         $publicRoutes = [
             '/home' => [HomeController::class, 'index'],
             '/login' => [LoginController::class, 'index'],
-            '/loginTest' => [LoginController::class, 'login'],
             '/register' => [RegisterController::class, 'index'],
-            '/registerTest' => [RegisterController::class, 'register'],
         ];
 
-        // TODO - Cookie has to be hashed for proper security?
+        $apiRoutes = [
+            // TODO Restful API routes
+            '/loginTest' => [LoginController::class, 'login'],
+            '/registerTest' => [RegisterController::class, 'register'],
+            '/api/changeUsername' => [ProfileController::class, 'changeUsername'],
+            '/api/changeEmail' => [ProfileController::class, 'changeEmail'],
+            '/api/changePassword' => [ProfileController::class, 'changePassword'],
+        ];
+
+        // Check if the route is an API route
+        if (isset($apiRoutes[$route])) {
+            list($controller, $action) = $apiRoutes[$route];
+            $controller = new $controller();
+            $controller->$action();
+            return;
+        }
 
         // Check if userId cookie is set
         if (isset($_COOKIE['userId'])) {
@@ -55,7 +66,7 @@ class Application
                 if (isset($publicRoutes[$route])) {
                     header('Location: /select', TRUE, 303);
                 } else {
-                    echo "404 - Page not found";
+                    echo "404 - Page not found (1)";
                 }
             }
         } else {
@@ -64,10 +75,10 @@ class Application
                 $controller = new $controller();
                 $controller->$action();
             } else {
-                if(isset($privateRoutes[$route])) {
+                if (isset($privateRoutes[$route])) {
                     header('Location: /login', TRUE, 303);
                 } else {
-                    echo "404 - Page not found";
+                    echo "404 - Page not found (2)";
                 }
             }
         }
