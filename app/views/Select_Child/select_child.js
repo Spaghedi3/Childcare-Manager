@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const fetchChildProfiles = async () => {
         try {
-            const response = await fetch('/TEST', {method: 'GET'});
+            const response = await fetch('/getProfiles', {method: 'GET'});
             console.log('Response:', response); 
             const responseText = await response.text(); 
             console.log('Raw Response:', responseText); 
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const addChildProfile = async () => {
         try {
-            const response = await fetch('/app/models/select/add_profile.php', { method: 'POST' });
+            const response = await fetch('/addProfile', { method: 'POST' });
             const newProfile = await response.json();
             createProfileCard(newProfile, document.querySelectorAll('.child-profile-item').length);
         } catch (error) {
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const deleteChildProfile = async (id) => {
         try {
-            const response = await fetch(`/app/models/select/delete_profile.php?id=${id}`, { method: 'GET' });
+            const response = await fetch(`/deleteProfile?id=${id}`, { method: 'GET', headers: {'Content-Type' : 'application/json', 'Accept' : 'application/json'} });
             const result = await response.json();
             if (result.success) {
                 fetchChildProfiles(); 
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const response = await fetch('/app/models/select/update_profile.php', {
+            const response = await fetch('/updateProfile', {
                 method: 'POST',
                 headers: updateData.profile_picture ? {} : { 'Content-Type': 'application/json' },
                 body: formData

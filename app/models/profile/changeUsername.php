@@ -12,8 +12,6 @@ $connection = Database::getConnection();
 
 $input = json_decode(file_get_contents('php://input'), true);
 
-header('Content-Type: application/json');
-
 if (isset($_COOKIE['userId'])) {
     $userId = $_COOKIE['userId'];
 } else if (isset($input['userId'])) {

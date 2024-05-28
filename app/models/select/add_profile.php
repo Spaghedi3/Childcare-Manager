@@ -1,5 +1,6 @@
 <?php
-require_once '../models/db.php';
+require_once '../app/models/db.php';
+require_once '../app/models/apiUtils.php';
 
 function addChildProfile() {
     $conn = Database::getConnection();
@@ -14,13 +15,11 @@ function addChildProfile() {
             'name' => $name,
             'profile_picture_path' => $profilePicturePath
         ];
-        echo json_encode($response);
+        sendResponse($response);
     } else {
-        http_response_code(500);
-        echo json_encode(['error' => 'Failed to add child profile: ' . $conn->error]);
+       sendResponse(['error' => 'Failed to add child profile: ' . $conn->error], 500);
     }
 }
 
 addChildProfile();
-
 ?>

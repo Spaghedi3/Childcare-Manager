@@ -1,5 +1,5 @@
 <?php
-require_once '../models/db.php';
+require_once '../app/models/db.php';
 
 function deleteChildProfile() {
     if (!isset($_GET['id'])) {

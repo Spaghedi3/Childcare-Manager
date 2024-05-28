@@ -1,6 +1,6 @@
 <?php
-require_once '../models/db.php';
-
+require_once '../app/models/db.php';
+require_once '../app/models/apiUtils.php';
 function updateChildProfile() {
     $conn = Database::getConnection();
 
@@ -15,17 +15,13 @@ function updateChildProfile() {
         }
 
         if (empty($fields)) {
-            http_response_code(400);
-            echo json_encode(['error' => 'No valid fields to update']);
-            return;
+            sendResponse(['error' => 'No valid fields to update'], 400);
         }
 
         $sql = "UPDATE children SET " . implode(", ", $fields) . " WHERE id='$id'";
     } else {
         if (!isset($_POST['id']) || !isset($_FILES['profile_picture'])) {
-            http_response_code(400);
-            echo json_encode(['error' => 'Missing required fields']);
-            return;
+            sendResponse(['error' => 'Missing required fields'], 400);
         }
 
         $id = $conn->real_escape_string($_POST['id']);
@@ -36,17 +32,14 @@ function updateChildProfile() {
             $profilePicturePath = 'media/images/' . basename($_FILES['profile_picture']['name']);
             $sql = "UPDATE children SET profile_picture_path='$profilePicturePath' WHERE id='$id'";
         } else {
-            http_response_code(500);
-            echo json_encode(['error' => 'Failed to upload image']);
-            return;
+            sendResponse(['error' => 'Failed to upload image'], 500);
         }
     }
 
     if ($conn->query($sql) === TRUE) {
-        echo json_encode(['success' => true]);
+        sendResponse(['success' => true]);
     } else {
-        http_response_code(500);
-        echo json_encode(['error' => 'Failed to update child profile']);
+        sendResponse(['error' => 'Failed to update child profile'], 500);
     }
 }
 

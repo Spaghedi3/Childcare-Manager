@@ -12,7 +12,20 @@ class SelectController
     }
     public function get_profiles()
     {
-        header('Content-Type: application/json');
         require_once '../app/models/select/get_profiles.php';
+    }
+    public function add_profile()
+    {
+        require_once '../app/models/select/add_profile.php';
+    }
+    public function update_profile()
+    {
+        header('Content-Type: application/json');
+        require_once '../app/models/select/update_profile.php';
+    }
+    public function delete_profile()
+    {
+        header('Content-Type: application/json');
+        require_once '../app/models/select/delete_profile.php';
     }
 }

@@ -31,18 +31,24 @@ class Application
             '/timeline' => [TimelineController::class, 'index'],
             '/logout' => [LoginController::class, 'logout'],
             '/ChildProfile' => [ChildProfileController::class, 'index'],
-            '/TEST' => [SelectController::class, 'get_profiles'],
+            '/getProfiles' => [SelectController::class, 'get_profiles'],
+            '/addProfile' => [SelectController::class, 'add_profile'],
+            '/updateProfile' => [SelectController::class, 'update_profile'],
+            '/deleteProfile' => [SelectController::class, 'delete_profile'],
         ];
 
         $publicRoutes = [
             '/home' => [HomeController::class, 'index'],
-            '/TEST' => [SelectController::class, 'get_profiles'],
             '/login' => [LoginController::class, 'index'],
             '/register' => [RegisterController::class, 'index'],
         ];
 
         $apiRoutes = [
             // TODO Restful API routes
+            '/getProfiles' => [SelectController::class, 'get_profiles'],
+            '/addProfile' => [SelectController::class, 'add_profile'],
+            '/updateProfile' => [SelectController::class, 'update_profile'],
+            '/deleteProfile' => [SelectController::class, 'delete_profile'],
             '/loginTest' => [LoginController::class, 'login'],
             '/registerTest' => [RegisterController::class, 'register'],
             '/api/changeUsername' => [ProfileController::class, 'changeUsername'],
