@@ -1,8 +1,12 @@
 <?php
 
+//modified this so you have to specify the file type you need in the url
 function getResponseType() {
-    if (isset($_SERVER['HTTP_ACCEPT']) && strpos($_SERVER['HTTP_ACCEPT'], 'application/xml') !== false) {
-        return 'xml';
+    if (isset($_GET['response_type'])) {
+        $responseType = $_GET['response_type'];
+        if ($responseType === 'xml') {
+            return 'xml';
+        }
     }
     return 'json';
 }

@@ -10,4 +10,9 @@ class ChildProfileController
         require_once '../app/views/ChildProfile/ChildProfile.php';
         require_once '../app/views/footer.php';
     }
+    public function getChildProfile()
+    {
+        header('Content-Type: application/json');
+        require_once '../app/models/childProfile/getChildProfile.php';
+    }
 }

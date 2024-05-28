@@ -28,4 +28,5 @@ class SelectController
         header('Content-Type: application/json');
         require_once '../app/models/select/delete_profile.php';
     }
+
 }

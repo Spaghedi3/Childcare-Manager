@@ -9,14 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const fetchChildProfiles = async () => {
         try {
-            const response = await fetch('/getProfiles', {method: 'GET'});
-            console.log('Response:', response); 
-            const responseText = await response.text(); 
-            console.log('Raw Response:', responseText); 
-    
+            const response = await fetch('/getProfiles', { method: 'GET' });
+            const responseText = await response.text();
             const data = JSON.parse(responseText);
-            console.log("AAAAAAAAAAAA");
-            console.log('Parsed Data:', JSON.stringify(data, null, 2)); 
             renderChildProfiles(data);
         } catch (error) {
             console.error('Error fetching child profiles:', error);
@@ -72,6 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
         deleteButton.addEventListener('click', () => deleteChildProfile(newChildDiv.dataset.id));
         newChildDiv.appendChild(deleteButton);
 
+        newChildDiv.addEventListener('click', () => {
+            window.location.href = `/childProfile?id=${profile.id}`;
+        });
+
         childProfileContainer.appendChild(newChildDiv);
     };
 
@@ -87,10 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const deleteChildProfile = async (id) => {
         try {
-            const response = await fetch(`/deleteProfile?id=${id}`, { method: 'GET', headers: {'Content-Type' : 'application/json', 'Accept' : 'application/json'} });
+            const response = await fetch(`/deleteProfile?id=${id}`, { method: 'GET', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' } });
             const result = await response.json();
             if (result.success) {
-                fetchChildProfiles(); 
+                fetchChildProfiles();
             } else {
                 console.error('Error deleting child profile:', result.error);
             }
@@ -165,7 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     addButton.addEventListener('click', () => {
-        console.log('Add button clicked');
         addChildProfile();
     });
 

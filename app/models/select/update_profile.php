@@ -3,8 +3,7 @@ require_once '../app/models/db.php';
 require_once '../app/models/apiUtils.php';
 
 function updateChildProfile() {
-    $conn = Database::getConnection();
-
+    $conn = Database::getConnection();  
     $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 
     if (strpos($contentType, 'application/json') === 0) {
