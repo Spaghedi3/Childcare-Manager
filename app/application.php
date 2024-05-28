@@ -31,10 +31,12 @@ class Application
             '/timeline' => [TimelineController::class, 'index'],
             '/logout' => [LoginController::class, 'logout'],
             '/ChildProfile' => [ChildProfileController::class, 'index'],
+            '/TEST' => [SelectController::class, 'get_profiles'],
         ];
 
         $publicRoutes = [
             '/home' => [HomeController::class, 'index'],
+            '/TEST' => [SelectController::class, 'get_profiles'],
             '/login' => [LoginController::class, 'index'],
             '/register' => [RegisterController::class, 'index'],
         ];

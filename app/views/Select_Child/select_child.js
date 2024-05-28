@@ -9,12 +9,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const fetchChildProfiles = async () => {
         try {
-            const response = await fetch('/app/models/select/get_profiles.php');
+            const response = await fetch('/TEST', {method: 'GET'});
             console.log('Response:', response); 
-            const data = await response.json();
-            console.log('Data:', response.json());
+            const responseText = await response.text(); 
+            console.log('Raw Response:', responseText); 
+    
+            const data = JSON.parse(responseText);
+            console.log("AAAAAAAAAAAA");
+            console.log('Parsed Data:', JSON.stringify(data, null, 2)); 
             renderChildProfiles(data);
-           
         } catch (error) {
             console.error('Error fetching child profiles:', error);
         }
