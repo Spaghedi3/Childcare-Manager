@@ -52,19 +52,28 @@ document.addEventListener('DOMContentLoaded', () => {
         const editButton = document.createElement('button');
         editButton.className = 'edit-name';
         editButton.textContent = 'Edit name';
-        editButton.addEventListener('click', () => toggleEditNameInput(newChildDiv, nameEditInput));
+        editButton.addEventListener('click', (event) => {
+            event.stopPropagation(); // Stop the click event from propagating to the parent div
+            toggleEditNameInput(newChildDiv, nameEditInput);
+        });
         newChildDiv.appendChild(editButton);
 
         const changeImageButton = document.createElement('button');
         changeImageButton.className = 'change-image';
         changeImageButton.textContent = 'Change image';
-        changeImageButton.addEventListener('click', () => changeChildImage(newChildDiv));
+        changeImageButton.addEventListener('click', (event) => {
+            event.stopPropagation(); // Stop the click event from propagating to the parent div
+            changeChildImage(newChildDiv);
+        });
         newChildDiv.appendChild(changeImageButton);
 
         const deleteButton = document.createElement('button');
         deleteButton.className = 'delete-child-button';
         deleteButton.textContent = 'x';
-        deleteButton.addEventListener('click', () => deleteChildProfile(newChildDiv.dataset.id));
+        deleteButton.addEventListener('click', (event) => {
+            event.stopPropagation(); // Stop the click event from propagating to the parent div
+            deleteChildProfile(newChildDiv.dataset.id);
+        });
         newChildDiv.appendChild(deleteButton);
 
         newChildDiv.addEventListener('click', () => {

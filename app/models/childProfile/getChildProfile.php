@@ -20,6 +20,9 @@ function getChildProfile() {
 
     if ($result->num_rows > 0) {
         $profile = $result->fetch_assoc();
+        
+        setcookie('child_id', $childId, time() + (86400 * 30), "/"); 
+        
         sendResponse($profile);
     } else {
         sendResponse(['error' => 'Child profile not found'], 404);

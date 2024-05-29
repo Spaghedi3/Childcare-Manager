@@ -30,7 +30,7 @@ class Application
             '/select' => [SelectController::class, 'index'],
             '/timeline' => [TimelineController::class, 'index'],
             '/logout' => [LoginController::class, 'logout'],
-            '/ChildProfile' => [ChildProfileController::class, 'index'],
+            '/childProfile' => [ChildProfileController::class, 'index'],
             '/getChildProfile' => [ChildProfileController::class, 'getChildProfile'],
             '/getProfiles' => [SelectController::class, 'get_profiles'],
             '/addProfile' => [SelectController::class, 'add_profile'],
@@ -46,7 +46,7 @@ class Application
 
         $apiRoutes = [
             // TODO Restful API routes
-            '/ChildProfile' => [ChildProfileController::class, 'index'],
+            '/childProfile' => [ChildProfileController::class, 'index'],
             '/getChildProfile' => [ChildProfileController::class, 'getChildProfile'],
             '/getProfiles' => [SelectController::class, 'get_profiles'],
             '/addProfile' => [SelectController::class, 'add_profile'],

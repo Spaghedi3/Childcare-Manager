@@ -11,13 +11,25 @@ function deleteChildProfile() {
     $conn = Database::getConnection();
     $id = $conn->real_escape_string($_GET['id']);
 
-    $sql = "DELETE FROM children WHERE id='$id'";
+    $conn->begin_transaction();
 
-    if ($conn->query($sql) === TRUE) {
+    try {
+        $sqlUsersChildren = "DELETE FROM users_children WHERE child_id='$id'";
+        if (!$conn->query($sqlUsersChildren)) {
+            throw new Exception('Failed to delete entry from users_children table');
+        }
+
+        $sqlChildren = "DELETE FROM children WHERE id='$id'";
+        if (!$conn->query($sqlChildren)) {
+            throw new Exception('Failed to delete child profile');
+        }
+
+        $conn->commit();
         echo json_encode(['success' => true]);
-    } else {
+    } catch (Exception $e) {
+        $conn->rollback();
         http_response_code(500);
-        echo json_encode(['error' => 'Failed to delete child profile']);
+        echo json_encode(['error' => $e->getMessage()]);
     }
 }
 
