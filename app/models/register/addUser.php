@@ -42,7 +42,7 @@ if ($password !== $confirmPassword) {
     sendResponse(['status' => 'error', 'message' => 'Passwords do not match'], 400);
 }
 
-// TODO Hash the password for security
+$password = password_hash($password, PASSWORD_DEFAULT);
 
 $stmt = $connection->prepare("INSERT INTO users (username, password, email) VALUES (?, ?, ?)");
 $stmt->bind_param("sss", $username, $password, $email);

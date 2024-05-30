@@ -26,7 +26,7 @@ function verifyPassword($userId, $password)
 
     if (mysqli_num_rows($result) > 0) {
         $user = mysqli_fetch_assoc($result);
-        return $user['password'] === $password;
+        return password_verify($password, $user['password']);
     }
 }
 
