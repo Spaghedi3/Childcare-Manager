@@ -23,7 +23,7 @@
         async function updateEmail() {
             const messageDiv = document.getElementById('message');
             try {
-                const response = await fetch('/api/changeEmail', {
+                const response = await fetch('/api/users/email', {
                     method: 'PUT',
                     credentials: 'include',
                     headers: {

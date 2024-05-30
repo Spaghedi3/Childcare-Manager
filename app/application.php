@@ -54,9 +54,9 @@ class Application
             '/deleteProfile' => [SelectController::class, 'delete_profile'],
             '/loginTest' => [LoginController::class, 'login'],
             '/registerTest' => [RegisterController::class, 'register'],
-            '/api/changeUsername' => [ProfileController::class, 'changeUsername'],
-            '/api/changeEmail' => [ProfileController::class, 'changeEmail'],
-            '/api/changePassword' => [ProfileController::class, 'changePassword'],
+            '/api/users/username' => [ProfileController::class, 'usernameAPI'],
+            '/api/users/email' => [ProfileController::class, 'emailAPI'],
+            '/api/users/password' => [ProfileController::class, 'passwordAPI'],
         ];
 
         // Check if the route is an API route

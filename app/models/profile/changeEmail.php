@@ -7,8 +7,6 @@ require_once '../app/models/apiUtils.php';
 $connection = Database::getConnection();
 
 // TODO - Use api key instead of userId
-// TODO - Restful api should use nouns instead of verbs
-// TODO - POST request should not be used to update user information?
 
 $input = json_decode(file_get_contents('php://input'), true);
 

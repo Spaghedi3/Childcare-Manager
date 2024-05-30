@@ -1,5 +1,7 @@
 <?php
 
+require_once '../app/models/apiUtils.php';
+
 class ProfileController
 {
     public function index()
@@ -30,18 +32,33 @@ class ProfileController
         require_once '../app/views/Profile/footer.php';
     }
 
-    public function changeUsername()
+    public function usernameAPI()
     {
-        require_once '../app/models/profile/changeUsername.php';
+        if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+            require_once '../app/models/profile/changeUsername.php';
+        }
+        else {
+            sendResponse(['status' => 'error', 'message' => 'Invalid request method'], 405);
+        }
     }
 
-    public function changeEmail()
+    public function emailAPI()
     {
-        require_once '../app/models/profile/changeEmail.php';
+        if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+            require_once '../app/models/profile/changeEmail.php';
+        }
+        else {
+            sendResponse(['status' => 'error', 'message' => 'Invalid request method'], 405);
+        }
     }
 
-    public function changePassword()
+    public function passwordAPI()
     {
-        require_once '../app/models/profile/changePassword.php';
+        if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+            require_once '../app/models/profile/changePassword.php';
+        }
+        else {
+            sendResponse(['status' => 'error', 'message' => 'Invalid request method'], 405);
+        }
     }
 }

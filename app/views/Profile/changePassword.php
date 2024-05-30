@@ -31,7 +31,7 @@
         async function updatePassword() {
             const messageDiv = document.getElementById('message');
             try {
-                const response = await fetch('/api/changePassword', {
+                const response = await fetch('/api/users/password', {
                     method: 'PUT',
 					credentials: 'include',
                     headers: {
