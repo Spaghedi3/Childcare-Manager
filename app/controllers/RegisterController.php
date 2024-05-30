@@ -9,8 +9,12 @@ class RegisterController
         require_once '../app/views/Register/register.php';
         require_once '../app/views/footer.php';
     }
-    public function register()
+    public function userAPI()
     {
-        require_once '../app/models/register/registerModel.php';
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            require_once '../app/models/register/addUser.php';
+        } else {
+            sendResponse(['status' => 'error', 'message' => 'Invalid request method'], 405);
+        }
     }
 }

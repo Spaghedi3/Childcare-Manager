@@ -18,6 +18,7 @@ class LoginController
     public function logout()
     {
         setcookie('userId', '', time() - 3600, '/');
+        setcookie('childId', '', time() - 3600, '/');
         header('Location: /home');
     }
 }

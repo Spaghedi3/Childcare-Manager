@@ -53,7 +53,7 @@ class Application
             '/updateProfile' => [SelectController::class, 'update_profile'],
             '/deleteProfile' => [SelectController::class, 'delete_profile'],
             '/loginTest' => [LoginController::class, 'login'],
-            '/registerTest' => [RegisterController::class, 'register'],
+            '/api/users' => [RegisterController::class, 'userAPI'],
             '/api/users/username' => [ProfileController::class, 'usernameAPI'],
             '/api/users/email' => [ProfileController::class, 'emailAPI'],
             '/api/users/password' => [ProfileController::class, 'passwordAPI'],
