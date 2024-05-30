@@ -62,8 +62,8 @@ if ($conn->query($sql) === TRUE) {
 $sql = "CREATE TABLE Users_Children (
     user_id INT(6) UNSIGNED,
     child_id INT(6) UNSIGNED,
-    FOREIGN KEY (user_id) REFERENCES Users(id),
-    FOREIGN KEY (child_id) REFERENCES Children(id)
+    FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE,
+    FOREIGN KEY (child_id) REFERENCES Children(id) ON DELETE CASCADE
 )";
 
 if ($conn->query($sql) === TRUE) {
@@ -93,7 +93,7 @@ $sql = "CREATE TABLE Relationships (
     name VARCHAR(50) NOT NULL,
     relationship_type VARCHAR(50),
     contact_info VARCHAR(255),
-    FOREIGN KEY (child_id) REFERENCES Children(id)
+    FOREIGN KEY (child_id) REFERENCES Children(id) ON DELETE CASCADE
 )";
 
 if ($conn->query($sql) === TRUE) {
@@ -109,15 +109,16 @@ $sql = "CREATE TABLE Posts (
     title VARCHAR(50) NOT NULL,
     content VARCHAR(255),
     datetime DATETIME NOT NULL,
-    media_link VARCHAR(255)
+    media_link VARCHAR(255),
+    FOREIGN KEY (child_id) REFERENCES Children(id) ON DELETE CASCADE
 )";
 
 // Post_tags table
 $sql = "CREATE TABLE Post_Tags (
     post_id INT(6) UNSIGNED,
     relationship_id VARCHAR(50) NOT NULL,
-    FOREIGN KEY (post_id) REFERENCES Posts(id),
-    FOREIGN KEY (relationship_id) REFERENCES Relationships(id)
+    FOREIGN KEY (post_id) REFERENCES Posts(id) ON DELETE CASCADE,
+    FOREIGN KEY (relationship_id) REFERENCES Relationships(id) ON DELETE CASCADE
 )";
 
 // Medical_Info table

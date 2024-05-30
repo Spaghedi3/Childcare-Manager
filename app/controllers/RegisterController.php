@@ -13,6 +13,8 @@ class RegisterController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             require_once '../app/models/register/addUser.php';
+        } else if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
+            require_once '../app/models/profile/deleteAccount.php';
         } else {
             sendResponse(['status' => 'error', 'message' => 'Invalid request method'], 405);
         }
