@@ -16,7 +16,7 @@
         <a href="/select">Select Child Profile</a>
         <a href="/schedule">Schedule</a>
         <a href="/medical">Medical Info</a>
-        <a href="/gallery">Gallery</a>
+        <a href="/media">Media</a>
         <a href="/relationships">Relationships</a>
         <a href="/timeline">Timeline</a>
         <a href="/profile">Profile</a>

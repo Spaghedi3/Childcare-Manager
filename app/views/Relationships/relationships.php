@@ -10,7 +10,7 @@
             <p>Names: [Parent 1], [Parent 2]</p>
             <p>Relationship: [Married, Divorced, Separated, etc.]</p>
             <p>Contact Information: [Phone numbers, email addresses]</p>
-            <p><a href="/gallery">See the memories with Parents</a></p>
+            <p><a href="/media">See the memories with Parents</a></p>
             <button>Edit</button>
         </div>
     </div>
@@ -21,7 +21,7 @@
             <p>Names: [Grandparent 1], [Grandparent 2]</p>
             <p>Relationship: [Maternal, Paternal, etc.]</p>
             <p>Contact Information: [Phone numbers, email addresses]</p>
-            <p><a href="/gallery">See the memories with Grandparents</a></p>
+            <p><a href="/media">See the memories with Grandparents</a></p>
             <button>Edit</button>
         </div>
     </div>
@@ -32,7 +32,7 @@
             <p>Names: [Sibling 1], [Sibling 2]</p>
             <p>Relationship: [Brother, Sister, etc.]</p>
             <p>Contact Information: [Phone numbers, email addresses]</p>
-            <p><a href="/gallery">See the memories with the Siblings</a></p>
+            <p><a href="/media">See the memories with the Siblings</a></p>
             <button>Edit</button>
         </div>
     </div>
@@ -42,7 +42,7 @@
             <h2>Friends</h2>
             <p>Names: [Friend 1], [Friend 2]</p>
             <p>Contact Information: [Phone numbers, email addresses]</p>
-            <p><a href="/gallery">See the memories with Friends</a></p>
+            <p><a href="/media">See the memories with Friends</a></p>
             <button>Edit</button>
         </div>
     </div>

@@ -5,7 +5,7 @@ ini_set('include_path', dirname(__FILE__) . '/controllers');
 require_once 'HomeController.php';
 require_once 'LoginController.php';
 require_once 'RegisterController.php';
-require_once 'GalleryController.php';
+require_once 'MediaController.php';
 require_once 'MedicalController.php';
 require_once 'ProfileController.php';
 require_once 'RelationshipsController.php';
@@ -22,7 +22,7 @@ class Application
 
         // Map routes to controller and action methods
         $privateRoutes = [
-            '/gallery' => [GalleryController::class, 'index'],
+            '/media' => [MediaController::class, 'index'],
             '/medical' => [MedicalController::class, 'index'],
             '/profile' => [ProfileController::class, 'index'],
             '/relationships' => [RelationshipsController::class, 'index'],

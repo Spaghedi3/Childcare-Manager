@@ -1,13 +1,13 @@
 <?php
 
-class GalleryController
+class MediaController
 {
     public function index()
     {
         require_once '../app/views/header.php';
-        require_once '../app/views/Gallery/header.php';
+        require_once '../app/views/Media/header.php';
         require_once '../app/views/navbar.php';
-        require_once '../app/views/Gallery/gallery.php';
+        require_once '../app/views/Media/media.php';
         require_once '../app/views/footer.php';
     }
 }

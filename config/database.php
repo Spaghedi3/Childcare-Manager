@@ -148,6 +148,26 @@ if ($conn->query($sql) === TRUE) {
     echo "Error creating table: " . $conn->error;
 }
 
+// Media table
+$sql = "CREATE TABLE Media (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id INT(6) UNSIGNED,
+    child_id INT(6) UNSIGNED,
+    title VARCHAR(50) NOT NULL,
+    description VARCHAR(255),
+    datetime DATETIME NOT NULL,
+    type VARCHAR(50),
+    media_link VARCHAR(255),
+    FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE,
+    FOREIGN KEY (child_id) REFERENCES Children(id) ON DELETE CASCADE
+)";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Table Media created successfully" . "<br>";
+} else {
+    echo "Error creating table: " . $conn->error;
+}
+
 $conn->close();
 
 ?>

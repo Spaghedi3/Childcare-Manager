@@ -1,10 +1,11 @@
-.gallery {
+.media {
     display: grid;
     grid-template-areas:
         "nav nav nav"
         "menu content content";
     grid-template-columns: 200px 1fr 1fr;
     grid-template-rows: auto 1fr;
+    /* height: 100vh; */
 }
 
 .nav {
@@ -13,6 +14,7 @@
 
 .menu {
     grid-area: menu;
+    /* border-right: #27ae60 1px solid; */
 }
 
 .menu a {
@@ -22,12 +24,12 @@
 }
 
 .menu a:hover {
-    background-color: #FFF455;
+    background-color: #27ae5f91;
     color: black;
 }
 
 @media (orientation: portrait) {
-    .gallery {
+    .media {
         grid-template-areas:
             "nav nav nav"
             "menu menu menu"
@@ -39,6 +41,8 @@
     .menu {
         display: flex;
         justify-content: space-around;
+        border-bottom: #27ae60 1px solid;
+
     }
 
     .menu a {
@@ -49,7 +53,7 @@
 }
 
 a.current {
-    background-color: #FFC700;
+    background-color: #27ae60;
     color: black;
 }
 
