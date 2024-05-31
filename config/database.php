@@ -47,27 +47,15 @@ if ($conn->query($sql) === TRUE) {
 // Children table
 $sql = "CREATE TABLE Children (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id INT(6) UNSIGNED,
     name VARCHAR(30) NOT NULL,
     birth_date DATE NOT NULL,
-    profile_picture_path VARCHAR(255)
+    profile_picture_path VARCHAR(255),
+    FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE
 )";
 
 if ($conn->query($sql) === TRUE) {
     echo "Table Children created successfully" . "<br>";
-} else {
-    echo "Error creating table: " . $conn->error;
-}
-
-// Users_Children table
-$sql = "CREATE TABLE Users_Children (
-    user_id INT(6) UNSIGNED,
-    child_id INT(6) UNSIGNED,
-    FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE,
-    FOREIGN KEY (child_id) REFERENCES Children(id) ON DELETE CASCADE
-)";
-
-if ($conn->query($sql) === TRUE) {
-    echo "Table Parents_Children created successfully" . "<br>";
 } else {
     echo "Error creating table: " . $conn->error;
 }
@@ -89,10 +77,12 @@ if ($conn->query($sql) === TRUE) {
 // Relationships table
 $sql = "CREATE TABLE Relationships (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id INT(6) UNSIGNED,
     child_id INT(6) UNSIGNED,
     name VARCHAR(50) NOT NULL,
     relationship_type VARCHAR(50),
     contact_info VARCHAR(255),
+    FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE,
     FOREIGN KEY (child_id) REFERENCES Children(id) ON DELETE CASCADE
 )";
 
@@ -105,25 +95,41 @@ if ($conn->query($sql) === TRUE) {
 // Posts table
 $sql = "CREATE TABLE Posts (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id INT(6) UNSIGNED,
     child_id INT(6) UNSIGNED,
     title VARCHAR(50) NOT NULL,
     content VARCHAR(255),
     datetime DATETIME NOT NULL,
     media_link VARCHAR(255),
+    FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE,
     FOREIGN KEY (child_id) REFERENCES Children(id) ON DELETE CASCADE
 )";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Table Posts created successfully" . "<br>";
+} else {
+    echo "Error creating table: " . $conn->error;
+}
 
 // Post_tags table
 $sql = "CREATE TABLE Post_Tags (
     post_id INT(6) UNSIGNED,
-    relationship_id VARCHAR(50) NOT NULL,
+    relationship_id INT(6) UNSIGNED,
     FOREIGN KEY (post_id) REFERENCES Posts(id) ON DELETE CASCADE,
     FOREIGN KEY (relationship_id) REFERENCES Relationships(id) ON DELETE CASCADE
 )";
 
+if ($conn->query($sql) === TRUE) {
+    echo "Table Post_Tags created successfully" . "<br>";
+} else {
+    echo "Error creating table: " . $conn->error;
+}
+
 // Medical_Info table
 $sql = "CREATE TABLE Medical_Info (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id INT(6) UNSIGNED,
+    child_id INT(6) UNSIGNED,
     basic_info TEXT,
     emergency_contact_info TEXT,
     medical_conditions TEXT,
@@ -131,7 +137,9 @@ $sql = "CREATE TABLE Medical_Info (
     allergies TEXT,
     immunization_record TEXT,
     insurance_info TEXT,
-    medical_history TEXT
+    medical_history TEXT,
+    FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE,
+    FOREIGN KEY (child_id) REFERENCES Children(id) ON DELETE CASCADE
 )";
 
 if ($conn->query($sql) === TRUE) {

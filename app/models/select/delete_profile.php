@@ -14,11 +14,6 @@ function deleteChildProfile() {
     $conn->begin_transaction();
 
     try {
-        $sqlUsersChildren = "DELETE FROM users_children WHERE child_id='$id'";
-        if (!$conn->query($sqlUsersChildren)) {
-            throw new Exception('Failed to delete entry from users_children table');
-        }
-
         $sqlChildren = "DELETE FROM children WHERE id='$id'";
         if (!$conn->query($sqlChildren)) {
             throw new Exception('Failed to delete child profile');

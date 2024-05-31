@@ -18,8 +18,7 @@ function getChildProfiles($userId) {
 
     $sql = "SELECT c.id, c.name, c.profile_picture_path 
             FROM children c
-            INNER JOIN Users_Children uc ON c.id = uc.child_id
-            WHERE uc.user_id = '$userId'";
+            where c.user_id = $userId";
     $result = $conn->query($sql);
 
     if ($result === FALSE) {
