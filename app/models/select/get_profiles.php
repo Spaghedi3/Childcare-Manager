@@ -9,7 +9,6 @@ if (isset($_COOKIE['userId'])) {
 } else {
     sendResponse(['status' => 'error', 'message' => 'User ID is required'], 400);
 }
-
 function getChildProfiles($userId) {
     $conn = Database::getConnection();
     if ($conn->connect_error) {

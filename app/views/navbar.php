@@ -2,7 +2,7 @@
     <input type="checkbox" id="nav-check">
     <div class="nav-header">
         <div class="nav-title">
-            <a href="#" id="childProfileLink">Childcare Manager</a>
+            <a href="/childProfile">Childcare Manager</a>
         </div>
     </div>
     <div class="nav-btn">
@@ -22,20 +22,3 @@
         <a href="/profile">Profile</a>
     </div>
 </div>
-
-<!-- <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const getCookie = (name) => {
-            const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${name}=`);
-            if (parts.length === 2) return parts.pop().split(';').shift();
-        };
-
-        const selectedChildId = getCookie('child_id');
-        if (selectedChildId) {
-            document.getElementById('childProfileLink').href = `/childProfile?id=${selectedChildId}`;
-        } else {
-            document.getElementById('childProfileLink').href = '/childProfile';
-        }
-    });
-</script> -->

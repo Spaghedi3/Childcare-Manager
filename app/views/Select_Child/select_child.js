@@ -1,11 +1,37 @@
 document.addEventListener('DOMContentLoaded', () => {
     const addButton = document.querySelector('.add-child-button');
     const childProfileContainer = document.getElementById('child-profile');
+    const navLinks = document.querySelectorAll('.nav-links a');
 
     if (!childProfileContainer) {
         console.error('Child profile container not found');
         return;
     }
+
+    const disableNavLinks = () => {
+        navLinks.forEach(link => {
+            if (link.href.includes('/profile') || link.href.includes('/select')) {
+                link.classList.remove('disabled');
+            } else {
+                link.classList.add('disabled');
+            }
+        });
+    };
+
+    const enableNavLinks = () => {
+        navLinks.forEach(link => {
+            link.classList.remove('disabled');
+        });
+    };
+
+    const checkChildSelection = () => {
+        const selectedChild = localStorage.getItem('selectedChild');
+        if (!selectedChild) {
+            disableNavLinks();
+        } else {
+            enableNavLinks();
+        }
+    };
 
     const fetchChildProfiles = async () => {
         try {
@@ -13,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const responseText = await response.text();
             const data = JSON.parse(responseText);
             renderChildProfiles(data);
+            checkChildSelection();
         } catch (error) {
             console.error('Error fetching child profiles:', error);
         }
@@ -53,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         editButton.className = 'edit-name';
         editButton.textContent = 'Edit name';
         editButton.addEventListener('click', (event) => {
-            event.stopPropagation(); // Stop the click event from propagating to the parent div
+            event.stopPropagation(); 
             toggleEditNameInput(newChildDiv, nameEditInput);
         });
         newChildDiv.appendChild(editButton);
@@ -62,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         changeImageButton.className = 'change-image';
         changeImageButton.textContent = 'Change image';
         changeImageButton.addEventListener('click', (event) => {
-            event.stopPropagation(); // Stop the click event from propagating to the parent div
+            event.stopPropagation();
             changeChildImage(newChildDiv);
         });
         newChildDiv.appendChild(changeImageButton);
@@ -71,12 +98,13 @@ document.addEventListener('DOMContentLoaded', () => {
         deleteButton.className = 'delete-child-button';
         deleteButton.textContent = 'x';
         deleteButton.addEventListener('click', (event) => {
-            event.stopPropagation(); // Stop the click event from propagating to the parent div
+            event.stopPropagation(); 
             deleteChildProfile(newChildDiv.dataset.id);
         });
         newChildDiv.appendChild(deleteButton);
 
         newChildDiv.addEventListener('click', () => {
+            localStorage.setItem('selectedChild', profile.id);
             window.location.href = `/childProfile?id=${profile.id}`;
         });
 
@@ -99,6 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const result = await response.json();
             if (result.success) {
                 fetchChildProfiles();
+                localStorage.removeItem('selectedChild');
             } else {
                 console.error('Error deleting child profile:', result.error);
             }

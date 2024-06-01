@@ -1,3 +1,10 @@
+<?php
+if (!isset($_COOKIE['child_id'])) {
+    header('Location: /select');
+    exit();
+}
+?>
+
 <body>
     <div class="container" style="max-width: 1000px;">
         <h1 id="child-name">Welcome to [Child's] Profile</h1>
@@ -18,33 +25,5 @@
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed interdum mauris nec nunc dignissim, a vestibulum eros ultrices. Donec vulputate augue ut augue sagittis, sit amet vehicula purus dignissim.
         </p>
     </div>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const childId = urlParams.get('id');
-
-        const fetchChildProfile = async (id) => {
-            try {
-                const response = await fetch(`/getChildProfile?id=${id}`, { 
-                    method: 'GET',
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-                const profile = await response.json();
-                document.getElementById('child-name').textContent = `Welcome to ${profile.name}'s Profile`;
-                document.getElementById('child-image').src = profile.profile_picture_path;
-            } catch (error) {
-                console.error('Error fetching child profile:', error);
-            }
-        };
-
-        if (childId) {
-            fetchChildProfile(childId);
-        } else {
-            console.error('Child ID not found in URL');
-        }
-    });
-</script>
-
+    <script src="/app/views/ChildProfile/loadChildProfile.js"></script>
+</body>

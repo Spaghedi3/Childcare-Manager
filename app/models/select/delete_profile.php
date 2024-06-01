@@ -20,6 +20,11 @@ function deleteChildProfile() {
         }
 
         $conn->commit();
+
+        if (isset($_COOKIE['child_id']) && $_COOKIE['child_id'] == $id) {
+            setcookie('child_id', '', time() - 3600, '/');
+        }
+
         echo json_encode(['success' => true]);
     } catch (Exception $e) {
         $conn->rollback();

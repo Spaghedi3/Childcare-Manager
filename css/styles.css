@@ -20,6 +20,12 @@ body {
   max-width: 600px;
 }
 
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+
 .select-child-container {
   display: flex;
   justify-content: center;
