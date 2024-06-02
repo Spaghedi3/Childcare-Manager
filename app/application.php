@@ -30,12 +30,6 @@ class Application
             '/select' => [SelectController::class, 'index'],
             '/timeline' => [TimelineController::class, 'index'],
             '/logout' => [LoginController::class, 'logout'],
-            '/childProfile' => [ChildProfileController::class, 'index'],
-            '/getChildProfile' => [ChildProfileController::class, 'getChildProfile'],
-            '/getProfiles' => [SelectController::class, 'get_profiles'],
-            '/addProfile' => [SelectController::class, 'add_profile'],
-            '/updateProfile' => [SelectController::class, 'update_profile'],
-            '/deleteProfile' => [SelectController::class, 'delete_profile'],
         ];
 
         $publicRoutes = [
@@ -57,6 +51,7 @@ class Application
             '/api/users/username' => [ProfileController::class, 'usernameAPI'],
             '/api/users/email' => [ProfileController::class, 'emailAPI'],
             '/api/users/password' => [ProfileController::class, 'passwordAPI'],
+            '/api/media' => [MediaController::class, 'mediaAPI'],
         ];
 
         // Check if the route is an API route
