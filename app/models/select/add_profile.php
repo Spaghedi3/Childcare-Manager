@@ -21,7 +21,7 @@ function addChildProfile($userId)
     if ($conn->query($sql) === TRUE) {
         $childId = $conn->insert_id;
 
-        setcookie('child_id', $childId, time() + (86400 * 30), "/"); 
+        setcookie('childId', $childId, time() + (86400 * 30), "/"); 
 
         $response = [
             'id' => $childId,

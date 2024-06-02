@@ -1,10 +1,3 @@
-<?php
-if (!isset($_COOKIE['childId'])) {
-	header('Location: /select');
-	exit();
-}
-?>
-
 <div class="media">
 	<div class="menu">
 		<div class="types">

@@ -1,5 +1,5 @@
 <?php
-if (!isset($_COOKIE['child_id'])) {
+if (!isset($_COOKIE['childId'])) {
     header('Location: /select');
     exit();
 }

@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let childId = urlParams.get('id');
 
     if (!childId) {
-        childId = getCookie('child_id');
+        childId = getCookie('childId');
     }
 
     const fetchChildProfile = async (id) => {
