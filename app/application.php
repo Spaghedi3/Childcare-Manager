@@ -64,7 +64,7 @@ class Application
 
         // Check if userId cookie is set
         if (isset($_COOKIE['userId'])) {
-            if(!isset($_COOKIE['child_id']) && $route != '/select' && $route != '/profile') {
+            if(!isset($_COOKIE['childId']) && $route != '/select' && $route != '/profile') {
                 // TODO gray out the navbar links in profile page as well
                 header('Location: /select');
                 exit();
