@@ -100,7 +100,7 @@ $sql = "CREATE TABLE Posts (
     title VARCHAR(50) NOT NULL,
     content VARCHAR(255),
     datetime DATETIME NOT NULL,
-    media_link VARCHAR(255),
+    mediaId INT(6) UNSIGNED,
     FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE,
     FOREIGN KEY (child_id) REFERENCES Children(id) ON DELETE CASCADE
 )";

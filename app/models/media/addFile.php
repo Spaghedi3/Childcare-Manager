@@ -69,7 +69,7 @@ if (isset($_FILES['file']) && $_FILES['file']['error'] == UPLOAD_ERR_OK) {
         $stmt->bind_param("iissss", $userId, $childId, $title, $datetime, $type, $media_link);
 
         if ($stmt->execute()) {
-            sendResponse(['status' => 'success', 'message' => 'File uploaded successfully']);
+            sendResponse(['status' => 'success', 'message' => 'File uploaded successfully', 'id' => $stmt->insert_id]);
         } else {
             sendResponse(['status' => 'error', 'message' => 'Failed to upload file'], 500);
         }

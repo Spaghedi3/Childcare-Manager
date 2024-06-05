@@ -19,9 +19,14 @@ class MediaController
             require_once '../app/models/media/addFile.php';
         }
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            require_once '../app/models/media/getFiles.php';
-        }
-        else {
+            $input = json_decode(file_get_contents('php://input'), true);
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
+                require_once '../app/models/media/getFile.php';
+            } else {
+                require_once '../app/models/media/getFiles.php';
+            }
+        } else {
             sendResponse(['status' => 'error', 'message' => 'Invalid request method'], 405);
         }
     }
