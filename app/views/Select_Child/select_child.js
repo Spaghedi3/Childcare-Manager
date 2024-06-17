@@ -24,8 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    const getCookie = (name) => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    };
+
     const checkChildSelection = () => {
-        const selectedChild = localStorage.getItem('selectedChild');
+        const selectedChild = getCookie('childId');
         if (!selectedChild) {
             disableNavLinks();
         } else {
@@ -104,7 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
         newChildDiv.appendChild(deleteButton);
 
         newChildDiv.addEventListener('click', () => {
-            localStorage.setItem('selectedChild', profile.id);
+            localStorage.setItem('childId', profile.id);
+            document.cookie = `childId=${profile.id}; path=/`; // Set cookie
             window.location.href = `/childProfile?id=${profile.id}`;
         });
 

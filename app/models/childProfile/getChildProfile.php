@@ -3,11 +3,11 @@ require_once '../app/models/db.php';
 require_once '../app/models/apiUtils.php';
 
 function getChildProfile() {
-    if (!isset($_GET['id'])) {
+    if (!isset($_COOKIE['childId'])) {
         sendResponse(['error' => 'Child ID is required'], 400);
     }
 
-    $childId = $_GET['id'];
+    $childId = $_COOKIE['childId'];
     $conn = Database::getConnection();
     if ($conn->connect_error) {
         sendResponse(['error' => 'Database connection failed: ' . $conn->connect_error], 500);

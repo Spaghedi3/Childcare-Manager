@@ -1,10 +1,3 @@
-<?php
-if (!isset($_COOKIE['childId'])) {
-    header('Location: /select');
-    exit();
-}
-?>
-
 <body>
     <div class="container" style="max-width: 1000px;">
         <h1 id="child-name">Welcome to [Child's] Profile</h1>

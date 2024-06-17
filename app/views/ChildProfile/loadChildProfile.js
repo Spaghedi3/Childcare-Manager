@@ -1,21 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const getCookie = (name) => {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(';').shift();
-    };
-
-    const urlParams = new URLSearchParams(window.location.search);
-    let childId = urlParams.get('id');
-
-    if (!childId) {
-        childId = getCookie('childId');
-    }
-
-    const fetchChildProfile = async (id) => {
+    const fetchChildProfile = async () => {
         try {
-            const response = await fetch(`/getChildProfile?id=${id}`, { 
+            const response = await fetch(`/getChildProfile`, { 
                 method: 'GET',
+                credentials: 'include',
                 headers: {
                     'Accept': 'application/json'
                 }
@@ -27,10 +15,5 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error fetching child profile:', error);
         }
     };
-
-    if (childId) {
-        fetchChildProfile(childId);
-    } else {
-        console.error('Child ID not found in URL or cookie');
-    }
+        fetchChildProfile();
 });
