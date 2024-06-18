@@ -1,43 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     const addButton = document.querySelector('.add-child-button');
     const childProfileContainer = document.getElementById('child-profile');
-    const navLinks = document.querySelectorAll('.nav-links a');
 
     if (!childProfileContainer) {
         console.error('Child profile container not found');
         return;
     }
-
-    const disableNavLinks = () => {
-        navLinks.forEach(link => {
-            if (link.href.includes('/profile') || link.href.includes('/select')) {
-                link.classList.remove('disabled');
-            } else {
-                link.classList.add('disabled');
-            }
-        });
-    };
-
-    const enableNavLinks = () => {
-        navLinks.forEach(link => {
-            link.classList.remove('disabled');
-        });
-    };
-
-    const getCookie = (name) => {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(';').shift();
-    };
-
-    const checkChildSelection = () => {
-        const selectedChild = getCookie('childId');
-        if (!selectedChild) {
-            disableNavLinks();
-        } else {
-            enableNavLinks();
-        }
-    };
 
     const fetchChildProfiles = async () => {
         try {

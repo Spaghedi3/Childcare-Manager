@@ -1,5 +1,4 @@
 <div class="container main-container">
-	<!-- <script></script> -->
 	<div class="profile-container">
 		<a href="#">
 			<img src="app/views/images/default-profile.png" alt="Profile Picture" style="width: 200px; height: 200px;">

@@ -1,21 +1,21 @@
-.main-container  {
+.main-container {
     max-width: 1000px;
     margin: 25px auto;
 
     display: grid;
-	grid-template-columns: 400px 1fr;
-	grid-template-areas: 
-    "profile form"
-    "buttons form"; 
-	gap: 20px;
+    grid-template-columns: 400px 1fr;
+    grid-template-areas:
+        "profile form"
+        "buttons form";
+    gap: 20px;
 }
 
 .profile-container {
-	grid-area: profile;
+    grid-area: profile;
 }
 
 .button-container {
-	grid-area: buttons;
+    grid-area: buttons;
 }
 
 .info-container {
@@ -26,7 +26,7 @@
 }
 
 .form-container {
-	grid-area: form;
+    grid-area: form;
     background-color: gainsboro;
     border-radius: 10px;
 }
@@ -34,7 +34,7 @@
 @media (max-width: 768px) {
     .main-container {
         grid-template-columns: 1fr;
-		grid-template-areas: "profile" "form" "buttons";
+        grid-template-areas: "profile" "form" "buttons";
         margin: 50px 0;
     }
 }
@@ -57,7 +57,13 @@
     display: inline-block;
     width: 100px;
 }
+
 .value {
     display: inline-block;
     width: 200px;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
 }

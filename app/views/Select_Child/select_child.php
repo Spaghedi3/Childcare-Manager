@@ -5,4 +5,5 @@
     <button class="add-child-button">+</button>
   </div>
 </div>
-<script src="/app/views/Select_Child/select_child.js"></script>
+<script src="app/views/Profile/checkLinks.js"></script>
+<script src="app/views/Select_Child/select_child.js"></script>
