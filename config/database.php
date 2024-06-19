@@ -60,16 +60,22 @@ if ($conn->query($sql) === TRUE) {
     echo "Error creating table: " . $conn->error;
 }
 
-// Events table
-$sql = "CREATE TABLE Events (
+// Schedule table
+$sql = "CREATE TABLE Schedule (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(50) NOT NULL,
-    description VARCHAR(255),
-    datetime DATETIME
+    user_id INT(6) UNSIGNED,
+    child_id INT(6) UNSIGNED,
+    day VARCHAR(10) NOT NULL,
+    hour INT(2) NOT NULL,
+    type VARCHAR(5) NOT NULL,
+    items VARCHAR(255),
+    FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE,
+    FOREIGN KEY (child_id) REFERENCES Children(id) ON DELETE CASCADE,
+    UNIQUE KEY unique_schedule (user_id, child_id, day, hour)
 )";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Table Events created successfully" . "<br>";
+    echo "Table Schedule created successfully" . "<br>";
 } else {
     echo "Error creating table: " . $conn->error;
 }

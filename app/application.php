@@ -13,6 +13,7 @@ require_once 'ScheduleController.php';
 require_once 'SelectController.php';
 require_once 'TimelineController.php';
 require_once 'ChildProfileController.php'; 
+require_once 'UserController.php';
 
 class Application
 {
@@ -48,11 +49,12 @@ class Application
             '/updateProfile' => [SelectController::class, 'update_profile'],
             '/deleteProfile' => [SelectController::class, 'delete_profile'],
             '/loginTest' => [LoginController::class, 'login'],
-            '/api/users' => [RegisterController::class, 'userAPI'],
+            '/api/users' => [UserController::class, 'userAPI'],
             '/api/users/username' => [ProfileController::class, 'usernameAPI'],
             '/api/users/email' => [ProfileController::class, 'emailAPI'],
             '/api/users/password' => [ProfileController::class, 'passwordAPI'],
             '/api/media' => [MediaController::class, 'mediaAPI'],
+            '/api/schedule' => [ScheduleController::class, 'scheduleAPI']
         ];
 
         // Check if the route is an API route

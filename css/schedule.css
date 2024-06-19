@@ -1,47 +1,89 @@
-.schedule {
-    display: flex;
-    flex-wrap: wrap;
-
+table {
+    margin: auto;
+    border-collapse: collapse;
 }
 
-.add-event,
-.events {
-    margin: 50px 20px;
-    padding: 40px;
-    background-color: white;
-    border-radius: 30px;
+th,
+td {
+    border: 1px solid black;
+    padding: 5px;
+    width: 100px;
+    height: 30px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+td.sleep {
+    background-color: lightblue;
+}
+
+td.feed {
+    background-color: lightgreen;
+}
+
+input[type="text"] {
+    border: none;
+    width: 100%;
+    padding: 0;
+    height: 100%;
+}
+
+button {
+    margin-top: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+#popup {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
 }
 
-.add-event {
-    flex: 0 1 auto;
-    max-width: 300px;
-    max-height: 400px;
-}
-
-.events {
-    flex: 1;
-}
-
-label {
-    display: block;
+.input-container {
+    display: flex;
+    align-items: center;
     margin-bottom: 5px;
 }
 
-input[type="datetime-local"],
-input[type="text"] {
-    min-width: 100%;
-    height: 3em;
+.input-container input {
+    flex: 1;
+    box-sizing: border-box;
+    margin-right: 5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
 }
 
-@media (max-width: 768px) {
-    .schedule {
-        flex-direction: column;
-    }
+.clear-button {
+    padding: 3px;
+    border: none;
+    background: none;
+    color: #999999;
+    cursor: pointer;
+}
 
-    .add-event,
-    .events {
-        max-width: 100%;
-        margin: 20px 10px;
-    }
+.clear-button:hover {
+    color: #666666;
+}
+
+#popup-clear {
+    display: block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #f44336;
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#popup-clear:hover {
+    background-color: #d32f2f;
 }
