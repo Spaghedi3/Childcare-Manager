@@ -22,14 +22,15 @@ if (isset($_REQUEST['password'])) {
 if ($userId = userExists($username)) {
     if (verifyPassword($userId, $password)) {
 
-        // TODO - Implement remember me functionality
-        // if (isset($_REQUEST["remember"]) && $_REQUEST["remember"] == "on") {
-        //     ini_set('session.cookie_lifetime', 3600 * 24 * 7 * 12); // 12 weeks
-        //     session_regenerate_id(true); // Regenerate session ID to apply the new settings
-        // } else {
-        //     ini_set('session.cookie_lifetime', 0);
-        //     session_regenerate_id(true);
-        // }
+        session_destroy();
+        if (isset($_REQUEST["remember"]) && $_REQUEST["remember"] == "on") {
+            ini_set('session.cookie_lifetime', 3600 * 24 * 7 * 12); // 12 weeks
+        } else {
+            ini_set('session.cookie_lifetime', 0);
+        }
+        session_start();
+        session_regenerate_id(true); // Regenerate session ID to apply the new settings
+
         $_SESSION['userId'] = $userId;
 
         sendResponse(['status' => 'success', 'message' => 'Login successful']);
