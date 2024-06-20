@@ -23,9 +23,6 @@ if (isset($_GET['message'])) {
     </div>
 
     <div class="container">
-        // TODO add forgot password functionality
-        <span class="psw"> <a href="#">Forgot password?</a></span>
-        <br>
         <a href="/register">Don't have an account?</a>
     </div>
 </form>

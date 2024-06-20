@@ -1,4 +1,4 @@
-<div style="text-align:center">
+<div class="container schedule-container">
     <h1>Schedule</h1>
     <div id="timetable"></div>
     <button id="edit-button">Edit Schedule</button>
