@@ -25,7 +25,6 @@ class Application
         $privateRoutes = [
             '/media' => [MediaController::class, 'index'],
             '/medical' => [MedicalController::class, 'index'],
-            '/getBasic' => [MedicalController::class, 'get_basic'],
             '/profile' => [ProfileController::class, 'index'],
             '/relationships' => [RelationshipsController::class, 'index'],
             '/schedule' => [ScheduleController::class, 'index'],
@@ -43,6 +42,9 @@ class Application
 
         $apiRoutes = [
             // TODO Restful API routes
+            '/getMedicalInfo' => [MedicalController::class, 'getMedicalInfo'],
+            '/updateMedicalInfo' => [MedicalController::class, 'updateMedicalInfo'],
+            '/getBasic' => [MedicalController::class, 'get_basic'],
             '/getChildProfile' => [ChildProfileController::class, 'getChildProfile'],
             '/getProfiles' => [SelectController::class, 'get_profiles'],
             '/addProfile' => [SelectController::class, 'add_profile'],

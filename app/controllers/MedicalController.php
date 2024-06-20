@@ -15,4 +15,14 @@ class MedicalController
     {
         require_once '../app/models/medical/getBasic.php';
     }
+
+    public function updateMedicalInfo()
+    {
+        require_once '../app/models/medical/updateMedicalInfo.php';
+    }
+
+    public function getMedicalInfo()
+    {
+        require_once '../app/models/medical/getMedicalInfo.php';   
+    }
 }

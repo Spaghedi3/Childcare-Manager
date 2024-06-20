@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const responseText = await response.text();
             const data = JSON.parse(responseText);
             renderChildProfiles(data);
-            checkChildSelection();
         } catch (error) {
             console.error('Error fetching child profiles:', error);
         }
@@ -40,6 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
         nameEditInput.className = 'name-edit-input';
         nameEditInput.value = profile.name;
         nameEditInput.style.display = 'none';
+        // Prevent click event propagation from the input box to the parent card
+        nameEditInput.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
         newChildDiv.appendChild(nameEditInput);
 
         const childImgDiv = document.createElement('div');
@@ -115,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const childName = childDiv.querySelector('h3');
         const editButton = childDiv.querySelector('.edit-name');
         const id = childDiv.dataset.id;
-
+        
         if (nameInput.style.display === 'none') {
             childName.style.display = 'none';
             nameInput.style.display = 'block';

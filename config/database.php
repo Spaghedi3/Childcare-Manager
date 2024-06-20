@@ -1,5 +1,4 @@
 <?php
-
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -11,6 +10,7 @@ $conn = new mysqli($servername, $username, $password);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
 // Drop database if it already exists
 $sql = "DROP DATABASE IF EXISTS web";
 if ($conn->query($sql) === TRUE) {
@@ -136,14 +136,14 @@ $sql = "CREATE TABLE Medical_Info (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user_id INT(6) UNSIGNED,
     child_id INT(6) UNSIGNED,
-    basic_info TEXT,
-    emergency_contact_info TEXT,
-    medical_conditions TEXT,
-    medication TEXT,
-    allergies TEXT,
-    immunization_record TEXT,
-    insurance_info TEXT,
-    medical_history TEXT,
+    basic_info TEXT DEFAULT '',
+    emergency_contact_info TEXT DEFAULT '',
+    medical_conditions TEXT DEFAULT '',
+    medication TEXT DEFAULT '',
+    allergies TEXT DEFAULT '',
+    immunization_record TEXT DEFAULT '',
+    insurance_info TEXT DEFAULT '',
+    medical_history TEXT DEFAULT '',
     FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE,
     FOREIGN KEY (child_id) REFERENCES Children(id) ON DELETE CASCADE
 )";

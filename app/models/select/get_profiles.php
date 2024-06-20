@@ -34,11 +34,9 @@ function getChildProfiles($userId)
     }
 
     $profiles = [];
-    $lastChildId = null;
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             $profiles[] = $row;
-            $lastChildId = $row['id'];
         }
     }
     
