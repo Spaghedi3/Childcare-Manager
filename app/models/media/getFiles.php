@@ -42,5 +42,15 @@ if ($type) {
 $stmt->execute();
 $result = $stmt->get_result();
 
-$result = $result->fetch_all(MYSQLI_ASSOC);
-sendResponse($result);
+$mediaData = [];
+while ($row = $result->fetch_assoc()) {
+    $filePath = $row['media_link'];
+    $fileType = mime_content_type($filePath);
+    $fileData = base64_encode(file_get_contents($filePath));
+    $row['media_data'] = "data:$fileType;base64,$fileData";
+    unset($row['media_link']);
+    $mediaData[] = $row;
+}
+
+sendResponse($mediaData);
+
