@@ -14,6 +14,9 @@ class UserController
             case 'DELETE':
                 require_once '../app/models/profile/deleteAccount.php';
                 break;
+            case 'PATCH':
+                require_once '../app/models/profile/changeUserData.php';
+                break;
             default:
                 sendResponse(['status' => 'error', 'message' => 'Invalid request method'], 405);
                 break;

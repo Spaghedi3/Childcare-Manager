@@ -23,8 +23,8 @@
         async function updateEmail() {
             const messageDiv = document.getElementById('message');
             try {
-                const response = await fetch('/api/users/email', {
-                    method: 'PUT',
+                const response = await fetch('/api/users', {
+                    method: 'PATCH',
                     credentials: 'include',
                     headers: {
                         'Content-Type': 'application/json',

@@ -31,34 +31,4 @@ class ProfileController
         }
         require_once '../app/views/Profile/footer.php';
     }
-
-    public function usernameAPI()
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
-            require_once '../app/models/profile/changeUsername.php';
-        }
-        else {
-            sendResponse(['status' => 'error', 'message' => 'Invalid request method'], 405);
-        }
-    }
-
-    public function emailAPI()
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
-            require_once '../app/models/profile/changeEmail.php';
-        }
-        else {
-            sendResponse(['status' => 'error', 'message' => 'Invalid request method'], 405);
-        }
-    }
-
-    public function passwordAPI()
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
-            require_once '../app/models/profile/changePassword.php';
-        }
-        else {
-            sendResponse(['status' => 'error', 'message' => 'Invalid request method'], 405);
-        }
-    }
 }

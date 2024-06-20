@@ -23,8 +23,8 @@
         async function updateUsername() {
             const messageDiv = document.getElementById('message');
             try {
-                const response = await fetch('/api/users/username', {
-                    method: 'PUT',
+                const response = await fetch('/api/users', {
+                    method: 'PATCH',
                     credentials: 'include',
                     headers: {
                         'Content-Type': 'application/json',

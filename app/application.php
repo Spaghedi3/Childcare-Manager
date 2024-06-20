@@ -41,7 +41,6 @@ class Application
         ];
 
         $apiRoutes = [
-            // TODO Restful API routes
             '/getMedicalInfo' => [MedicalController::class, 'getMedicalInfo'],
             '/updateMedicalInfo' => [MedicalController::class, 'updateMedicalInfo'],
             '/getBasic' => [MedicalController::class, 'get_basic'],
@@ -50,11 +49,9 @@ class Application
             '/addProfile' => [SelectController::class, 'add_profile'],
             '/updateProfile' => [SelectController::class, 'update_profile'],
             '/deleteProfile' => [SelectController::class, 'delete_profile'],
+            
             '/api/session' => [LoginController::class, 'sessionAPI'],
             '/api/users' => [UserController::class, 'userAPI'],
-            '/api/users/username' => [ProfileController::class, 'usernameAPI'],
-            '/api/users/email' => [ProfileController::class, 'emailAPI'],
-            '/api/users/password' => [ProfileController::class, 'passwordAPI'],
             '/api/media' => [MediaController::class, 'mediaAPI'],
             '/api/schedule' => [ScheduleController::class, 'scheduleAPI']
         ];
