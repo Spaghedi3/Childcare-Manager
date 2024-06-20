@@ -6,10 +6,10 @@ require_once '../app/models/apiUtils.php';
 function getChildBasic()
 {
 
-    if (!isset($_COOKIE['childId'])) {
+    if (!isset($_SESSION['childId'])) {
         sendResponse(['error' => 'Child ID is required'], 400);
     }
-    $childId = $_COOKIE['childId'];
+    $childId = $_SESSION['childId'];
     $conn = Database::getConnection();
     if ($conn->connect_error) {
         sendResponse(['error' => 'Database connection failed: ' . $conn->connect_error], 500);

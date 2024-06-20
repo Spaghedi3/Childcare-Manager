@@ -4,13 +4,19 @@ require_once '../app/models/apiUtils.php';
 
 function updateMedicalInfo()
 {
-    // Check for child ID in the cookie
-    if (!isset($_COOKIE['childId'])) {
-        sendResponse(['error' => 'Child ID is required'], 400);
-        return;
+    if(isset($_SESSION['userId'])) {
+        $userId = $_SESSION['userId'];
+    } else {
+        sendResponse(['status' => 'error', 'message' => 'Log in at /api/session'], 400);
+    }
+    
+    if (isset($_SESSION['childId'])) {
+        $childId = $_SESSION['childId'];
+    } else {
+        sendResponse(['status' => 'error', 'message' => 'Child ID is required'], 400);
     }
 
-    $childId = $_COOKIE['childId'];
+    $childId = $_SESSION['childId'];
     $conn = Database::getConnection();
     if ($conn->connect_error) {
         sendResponse(['error' => 'Database connection failed: ' . $conn->connect_error], 500);

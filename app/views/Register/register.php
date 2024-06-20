@@ -24,34 +24,41 @@
 </div>
 
 <script>
-    // TODO fetch api?
-    document.getElementById('registerForm').addEventListener('submit', function(event) {
+    document.getElementById('registerForm').addEventListener('submit', async function(event) {
         event.preventDefault();
         var username = document.getElementById('username').value;
         var email = document.getElementById('email').value;
         var password = document.getElementById('password').value;
         var confirm_password = document.getElementById('confirm_password').value;
 
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/api/users', true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4) {
-                var response = JSON.parse(xhr.responseText);
-                if (response.status === 'success') {
-                    window.location.href = '/login?message=Registered successfully, Please login!';
-                } else {
-                    var messageDiv = document.getElementById('message');
-                    messageDiv.style.display = 'block';
-                    messageDiv.innerText = response.message;
-                }
+        try {
+            let response = await fetch('/api/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: username,
+                    email: email,
+                    password: password,
+                    confirmPassword: confirm_password
+                })
+            });
+
+            let data = await response.json();
+
+            if (data.status === 'success') {
+                window.location.href = '/login?message=Registered successfully, Please login!';
+            } else {
+                var messageDiv = document.getElementById('message');
+                messageDiv.style.display = 'block';
+                messageDiv.innerText = data.message;
             }
-        };
-        xhr.send(JSON.stringify({
-            username: username,
-            email: email,
-            password: password,
-            confirmPassword: confirm_password
-        }));
+        } catch (error) {
+            console.error('Error:', error);
+            var messageDiv = document.getElementById('message');
+            messageDiv.style.display = 'block';
+            messageDiv.innerText = 'An error occurred. Please try again later.';
+        }
     });
 </script>

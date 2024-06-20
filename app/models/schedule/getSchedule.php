@@ -5,20 +5,17 @@ require_once '../app/models/apiUtils.php';
 
 $input = json_decode(file_get_contents('php://input'), true);
 
-if (isset($_COOKIE['userId'])) {
-    $userId = $_COOKIE['userId'];
-} else if (isset($input['userId'])) {
-    $userId = $input['userId'];
+if(isset($_SESSION['userId'])) {
+    $userId = $_SESSION['userId'];
 } else {
-    sendResponse(['status' => 'error', 'message' => 'User Id is required'], 400);
+    sendResponse(['status' => 'error', 'message' => 'Log in at /api/session'], 400);
 }
 
-if (isset($_COOKIE['childId'])) {
-    $childId = $_COOKIE['childId'];
-} else if (isset($input['childId'])) {
-    $childId = $input['childId'];
+if (isset($_SESSION['childId'])) {
+    $childId = $_SESSION['childId'];
 } else {
-    sendResponse(['status' => 'error', 'message' => 'Child Id is required'], 400);
+    // TODO rename all messages to 'Get child ID from /api/children'
+    sendResponse(['status' => 'error', 'message' => 'Child ID is required'], 400);
 }
 
 $connection = Database::getConnection();

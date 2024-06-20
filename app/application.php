@@ -50,7 +50,7 @@ class Application
             '/addProfile' => [SelectController::class, 'add_profile'],
             '/updateProfile' => [SelectController::class, 'update_profile'],
             '/deleteProfile' => [SelectController::class, 'delete_profile'],
-            '/loginTest' => [LoginController::class, 'login'],
+            '/api/session' => [LoginController::class, 'sessionAPI'],
             '/api/users' => [UserController::class, 'userAPI'],
             '/api/users/username' => [ProfileController::class, 'usernameAPI'],
             '/api/users/email' => [ProfileController::class, 'emailAPI'],
@@ -67,10 +67,9 @@ class Application
             return;
         }
 
-        // Check if userId cookie is set
-        if (isset($_COOKIE['userId'])) {
+        // Check if userId is set in session
+        if (isset($_SESSION['userId'])) {
             if(!isset($_COOKIE['childId']) && $route != '/select' && $route != '/profile') {
-                // TODO gray out the navbar links in profile page as well
                 header('Location: /select');
                 exit();
             }

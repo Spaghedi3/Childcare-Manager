@@ -1,7 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
     const fetchChildProfile = async () => {
         try {
-            const response = await fetch(`/getChildProfile`, { 
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const id = urlParams.get('id')
+
+            let fetchUrl = '/getChildProfile';
+            if (id) {
+                fetchUrl += `?id=${id}`;
+            }
+
+            const response = await fetch(fetchUrl, {
                 method: 'GET',
                 credentials: 'include',
                 headers: {
@@ -15,5 +24,5 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error fetching child profile:', error);
         }
     };
-        fetchChildProfile();
+    fetchChildProfile();
 });

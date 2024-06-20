@@ -1,13 +1,19 @@
 <?php
-require_once '../app/models/db.php'; 
+require_once '../app/models/db.php';
 require_once '../app/models/apiUtils.php';
 
-function getChildProfile() {
-    if (!isset($_COOKIE['childId'])) {
-        sendResponse(['error' => 'Child ID is required'], 400);
+function getChildProfile()
+{
+    if (!isset($_REQUEST['id'])) {
+        if (!isset($_COOKIE['childId'])) {
+            sendResponse(['error' => 'Child ID is required'], 400);
+        } else {
+            $childId = $_COOKIE['childId'];
+        }
+    } else {
+        $childId = $_REQUEST['id'];
     }
 
-    $childId = $_COOKIE['childId'];
     $conn = Database::getConnection();
     if ($conn->connect_error) {
         sendResponse(['error' => 'Database connection failed: ' . $conn->connect_error], 500);
@@ -20,9 +26,9 @@ function getChildProfile() {
 
     if ($result->num_rows > 0) {
         $profile = $result->fetch_assoc();
-        
-        setcookie('childId', $childId, time() + (86400 * 30), "/"); 
-        
+
+        $_SESSION['childId'] = $childId;
+
         sendResponse($profile);
     } else {
         sendResponse(['error' => 'Child profile not found'], 404);
@@ -30,4 +36,3 @@ function getChildProfile() {
 }
 
 getChildProfile();
-?>

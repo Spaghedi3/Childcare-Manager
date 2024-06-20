@@ -10,22 +10,16 @@ if ($type !== null && !in_array($type, ['audio', 'video', 'document', 'image']))
     sendResponse(['status' => 'error', 'message' => 'Invalid type specified'], 400);
 }
 
-if (isset($_COOKIE['userId'])) {
-    $userId = $_COOKIE['userId'];
-} else if (isset($input['userId'])) {
-    $userId = $input['userId'];
+if(isset($_SESSION['userId'])) {
+    $userId = $_SESSION['userId'];
 } else {
-    sendResponse(['status' => 'error', 'message' => 'User Id is required'], 400);
+    sendResponse(['status' => 'error', 'message' => 'Log in at /api/session'], 400);
 }
 
-// TODO check if childId exists
-
-if (isset($_COOKIE['childId'])) {
-    $childId = $_COOKIE['childId'];
-} else if (isset($input['childId'])) {
-    $childId = $input['childId'];
+if (isset($_SESSION['childId'])) {
+    $childId = $_SESSION['childId'];
 } else {
-    sendResponse(['status' => 'error', 'message' => 'Child Id is required'], 400);
+    sendResponse(['status' => 'error', 'message' => 'Child ID is required'], 400);
 }
 
 $connection = Database::getConnection();

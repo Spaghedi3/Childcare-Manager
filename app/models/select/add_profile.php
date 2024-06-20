@@ -2,12 +2,10 @@
 require_once '../app/models/db.php';
 require_once '../app/models/apiUtils.php';
 
-if (isset($_COOKIE['userId'])) {
-    $userId = $_COOKIE['userId'];
-} else if (isset($input['userId'])) {
-    $userId = $input['userId'];
+if(isset($_SESSION['userId'])) {
+    $userId = $_SESSION['userId'];
 } else {
-    sendResponse(['status' => 'error', 'message' => 'User Id is required'], 400);
+    sendResponse(['status' => 'error', 'message' => 'Log in at /api/session'], 400);
 }
 
 function addChildProfile($userId)
@@ -35,9 +33,6 @@ function addChildProfile($userId)
 
         if ($stmt->execute()) {
             $stmt->close();
-
-            // Set childId cookie for future requests
-            setcookie('childId', $childId, time() + (86400 * 30), "/");
 
             $response = [
                 'id' => $childId,

@@ -24,6 +24,7 @@ function deleteChildProfile() {
         if (isset($_COOKIE['childId']) && $_COOKIE['childId'] == $id) {
             setcookie('childId', '', time() - 3600, '/');
         }
+        unset($_SESSION['childId']);
 
         echo json_encode(['success' => true]);
     } catch (Exception $e) {

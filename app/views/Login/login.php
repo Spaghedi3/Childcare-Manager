@@ -1,11 +1,15 @@
 <?php
 if (isset($_GET['message'])) {
-    echo '<div class="container"><p>'
-     . htmlspecialchars($_GET['message']) . '</p></div>';
+    echo '<div class="container">'
+     . htmlspecialchars($_GET['message']) . '</div>';
+}
+else
+{
+    echo '<div class="container" id="message" style="display: none"></div>';
 }
 ?>
 
-<form action="/loginTest" method="post">
+<form id="loginForm">
     <div class="imgcontainer"></div>
     <div class="container">
         <h1 id="login">Log into your account</h1>
@@ -26,3 +30,35 @@ if (isset($_GET['message'])) {
         <a href="/register">Don't have an account?</a>
     </div>
 </form>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+
+        try {
+            let response = await fetch('/api/session?username=' + username + '&password=' + password, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            let data = await response.json();
+
+            if (data.status === 'success') {
+                window.location.href = '/select';
+            } else {
+                var messageDiv = document.getElementById('message');
+                messageDiv.style.display = 'block';
+                messageDiv.innerText = data.message;
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            var messageDiv = document.getElementById('message');
+            messageDiv.style.display = 'block';
+            messageDiv.innerText = 'An error occurred. Please try again later.';
+        }
+    });
+</script>

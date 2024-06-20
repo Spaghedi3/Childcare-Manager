@@ -21,7 +21,7 @@
 	</div>
 
 	<div class="button-container">
-		<a class="btn" href="/logout">Logout</a>
+		<a class="btn" href="#" id="logoutBtn">Logout</a>
 		<a class="btn" href="/profile?form=deleteAccount">Delete account</a>
 		<a class="btn" href="#" id="exportDataBtn">Export data</a>
 	</div>

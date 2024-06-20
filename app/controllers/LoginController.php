@@ -10,15 +10,18 @@ class LoginController
         require_once '../app/views/footer.php';
     }
 
-    public function login()
+    public function sessionAPI()
     {
-        require_once '../app/models/login/loginModel.php';
-    }
-
-    public function logout()
-    {
-        setcookie('userId', '', time() - 3600, '/');
-        setcookie('childId', '', time() - 3600, '/');
-        header('Location: /home');
+        switch ($_SERVER['REQUEST_METHOD']) {
+            case 'POST':
+                require_once '../app/models/login/loginModel.php';
+                break;
+            case 'DELETE':
+                require_once '../app/models/login/logoutModel.php';
+                break;
+            default:
+                sendResponse(['status' => 'error', 'message' => 'Invalid request method'], 405);
+                break;
+        }
     }
 }
