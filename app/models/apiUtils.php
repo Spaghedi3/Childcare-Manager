@@ -1,7 +1,8 @@
 <?php
 
 //modified this so you have to specify the file type you need in the url
-function getResponseType() {
+function getResponseType()
+{
     if (isset($_GET['response_type'])) {
         $responseType = $_GET['response_type'];
         if ($responseType === 'xml') {
@@ -11,10 +12,11 @@ function getResponseType() {
     return 'json';
 }
 
-function sendResponse($data, $statusCode = 200) {
+function sendResponse($data, $statusCode = 200)
+{
     $responseType = getResponseType();
     http_response_code($statusCode);
-    
+
     if ($responseType == 'xml') {
         header('Content-Type: application/xml');
         echo arrayToXml($data);
@@ -25,7 +27,8 @@ function sendResponse($data, $statusCode = 200) {
     exit();
 }
 
-function arrayToXml($data, $rootElement = 'response', $xml = null) {
+function arrayToXml($data, $rootElement = 'response', $xml = null)
+{
     if ($xml === null) {
         $xml = new SimpleXMLElement("<{$rootElement}/>");
     }
@@ -40,7 +43,8 @@ function arrayToXml($data, $rootElement = 'response', $xml = null) {
 }
 
 // Validate user existence
-function userExistsById($connection, $userId) {
+function userExistsById($connection, $userId)
+{
     $stmt = $connection->prepare("SELECT id FROM users WHERE id = ?");
     $stmt->bind_param("i", $userId);
     $stmt->execute();
@@ -48,4 +52,34 @@ function userExistsById($connection, $userId) {
     $exists = $stmt->num_rows > 0;
     $stmt->close();
     return $exists;
+}
+
+function mediaExistsById($connection, $userId, $childId, $mediaId)
+{
+    $mediaStmt = $connection->prepare("SELECT COUNT(*) FROM media WHERE id = ? AND user_id = ? AND child_id = ?");
+    $mediaCount = 0;
+    $mediaStmt->bind_param('iii', $mediaId, $userId, $childId);
+    $mediaStmt->execute();
+    $mediaStmt->bind_result($mediaCount);
+    $mediaStmt->fetch();
+    $mediaStmt->close();
+
+    if ($mediaCount === 0) 
+        return false;
+    return true;
+}
+
+function postExistsById($connection, $userId, $childId, $postId)
+{
+    $postStmt = $connection->prepare("SELECT COUNT(*) FROM posts WHERE id = ? AND user_id = ? AND child_id = ?");
+    $postCount = 0;
+    $postStmt->bind_param('iii', $postId, $userId, $childId);
+    $postStmt->execute();
+    $postStmt->bind_result($postCount);
+    $postStmt->fetch();
+    $postStmt->close();
+
+    if ($postCount === 0) 
+        return false;
+    return true;
 }

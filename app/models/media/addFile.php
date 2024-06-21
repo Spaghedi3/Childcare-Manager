@@ -5,7 +5,7 @@ require_once '../app/models/apiUtils.php';
 
 $conn = Database::getConnection();
 
-if(isset($_SESSION['userId'])) {
+if (isset($_SESSION['userId'])) {
     $userId = $_SESSION['userId'];
 } else {
     sendResponse(['status' => 'error', 'message' => 'Log in at /api/session'], 400);
@@ -59,6 +59,7 @@ if (isset($_FILES['file']) && $_FILES['file']['error'] == UPLOAD_ERR_OK) {
     if (move_uploaded_file($fileTmpPath, $dest_path)) {
 
         $title = basename($fileName, '.' . $fileExtension); // File name without extension
+        date_default_timezone_set('Europe/Bucharest');
         $datetime = date('Y-m-d H:i:s');
         $media_link = $dest_path;
 

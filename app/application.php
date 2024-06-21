@@ -56,7 +56,8 @@ class Application
             '/api/session' => [LoginController::class, 'sessionAPI'],
             '/api/users' => [UserController::class, 'userAPI'],
             '/api/media' => [MediaController::class, 'mediaAPI'],
-            '/api/schedule' => [ScheduleController::class, 'scheduleAPI']
+            '/api/schedule' => [ScheduleController::class, 'scheduleAPI'],
+            '/api/posts' => [TimelineController::class, 'postsAPI'],
         ];
 
         // Check if the route is an API route
