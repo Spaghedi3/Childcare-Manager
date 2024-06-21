@@ -85,9 +85,9 @@ $sql = "CREATE TABLE Relationships (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user_id INT(6) UNSIGNED,
     child_id INT(6) UNSIGNED,
-    name VARCHAR(50) NOT NULL,
+    name VARCHAR(50) NOT NULL, 
     relationship_type VARCHAR(50),
-    contact_info VARCHAR(255),
+    contact_info VARCHAR(255) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE,
     FOREIGN KEY (child_id) REFERENCES Children(id) ON DELETE CASCADE
 )";

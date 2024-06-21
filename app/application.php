@@ -41,6 +41,9 @@ class Application
         ];
 
         $apiRoutes = [
+            // TODO Restful API routes
+            '/getRelationships' => [RelationshipsController::class, 'getRelationships'],
+            '/updateRelationship' => [RelationshipsController::class, 'updateRelationship'],
             '/getMedicalInfo' => [MedicalController::class, 'getMedicalInfo'],
             '/updateMedicalInfo' => [MedicalController::class, 'updateMedicalInfo'],
             '/getBasic' => [MedicalController::class, 'get_basic'],

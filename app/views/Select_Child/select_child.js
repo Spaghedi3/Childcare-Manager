@@ -81,8 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         newChildDiv.appendChild(deleteButton);
 
         newChildDiv.addEventListener('click', () => {
-            localStorage.setItem('childId', profile.id);
-            document.cookie = `childId=${profile.id}; path=/`; // Set cookie
+            document.cookie = `childId=${profile.id}; path=/`; 
             window.location.href = `/childProfile?id=${profile.id}`;
         });
 
@@ -105,7 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const result = await response.json();
             if (result.success) {
                 fetchChildProfiles();
-                localStorage.removeItem('selectedChild');
             } else {
                 console.error('Error deleting child profile:', result.error);
             }

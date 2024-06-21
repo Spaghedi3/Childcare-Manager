@@ -23,14 +23,12 @@ function updateMedicalInfo()
         return;
     }
 
-    // Get the JSON data from the request body
     $data = json_decode(file_get_contents('php://input'), true);
     if (!$data) {
         sendResponse(['error' => 'Invalid input'], 400);
         return;
     }
 
-    // Fields mapping for medical_info table
     $medicalInfoFields = [
         'emergency' => 'emergency_contact_info',
         'med_conditions' => 'medical_conditions',

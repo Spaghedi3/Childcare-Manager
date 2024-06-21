@@ -58,9 +58,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const title = p.textContent.split(': ')[0] + ': ';
                 p.textContent = `${title}${newValue}`;
                 newDateOfBirth = newValue;
-            } else if (key === 'full_name') {
-                const title = p.textContent.split(': ')[0] + ': ';
-                p.textContent = `${title}${newValue}`;
             } else {
                 p.textContent = newValue;
             }
@@ -93,7 +90,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.error('Error updating medical information:', error);
         }
 
-        // Print data in a human-readable format
         console.log('Data:', JSON.stringify(data, null, 2));
     };
 
