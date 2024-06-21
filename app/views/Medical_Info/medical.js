@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         try {
-            const response = await fetch('/updateMedicalInfo', {
+            const response = await fetch('/api/updateMedicalInfo', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
     try {
-        const response = await fetch('/getMedicalInfo');
+        const response = await fetch('/api/getMedicalInfo');
         if (!response.ok) {
             throw new Error('Failed to fetch medical information');
         }

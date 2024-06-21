@@ -2,16 +2,16 @@
 require_once '../app/models/db.php';
 require_once '../app/models/apiUtils.php';
 
-function getChildProfile()
+function getChildProfile($id = null)
 {
-    if (!isset($_REQUEST['id'])) {
+    if (!isset($id)) {
         if (!isset($_COOKIE['childId'])) {
             sendResponse(['error' => 'Child ID is required'], 400);
         } else {
             $childId = $_COOKIE['childId'];
         }
     } else {
-        $childId = $_REQUEST['id'];
+        $childId = $id;
     }
 
     $conn = Database::getConnection();
@@ -35,4 +35,4 @@ function getChildProfile()
     }
 }
 
-getChildProfile();
+getChildProfile($id);

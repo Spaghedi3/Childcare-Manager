@@ -51,7 +51,7 @@ async function fetchData(type) {
 
 async function fetchDataById(type, id) {
     try {
-        const response = await fetch('/api/media?id=' + id, {
+        const response = await fetch('/api/media/' + id, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8'

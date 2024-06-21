@@ -23,7 +23,7 @@ class SelectController
         header('Content-Type: application/json');
         require_once '../app/models/select/update_profile.php';
     }
-    public function delete_profile()
+    public function delete_profile($id = null)
     {
         header('Content-Type: application/json');
         require_once '../app/models/select/delete_profile.php';

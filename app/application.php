@@ -12,7 +12,7 @@ require_once 'RelationshipsController.php';
 require_once 'ScheduleController.php';
 require_once 'SelectController.php';
 require_once 'TimelineController.php';
-require_once 'ChildProfileController.php'; 
+require_once 'ChildProfileController.php';
 require_once 'UserController.php';
 
 class Application
@@ -42,6 +42,7 @@ class Application
 
         $apiRoutes = [
             // TODO Restful API routes
+            // TODO check userId in session for security reasons
             '/getRelationships' => [RelationshipsController::class, 'getRelationships'],
             '/updateRelationship' => [RelationshipsController::class, 'updateRelationship'],
             '/getMedicalInfo' => [MedicalController::class, 'getMedicalInfo'],
@@ -52,25 +53,36 @@ class Application
             '/addProfile' => [SelectController::class, 'add_profile'],
             '/updateProfile' => [SelectController::class, 'update_profile'],
             '/deleteProfile' => [SelectController::class, 'delete_profile'],
-            
-            '/api/session' => [LoginController::class, 'sessionAPI'],
-            '/api/users' => [UserController::class, 'userAPI'],
-            '/api/media' => [MediaController::class, 'mediaAPI'],
-            '/api/schedule' => [ScheduleController::class, 'scheduleAPI'],
-            '/api/posts' => [TimelineController::class, 'postsAPI'],
+
+            '/session' => [LoginController::class, 'sessionAPI'],
+            '/users' => [UserController::class, 'userAPI'],
+            '/media' => [MediaController::class, 'mediaAPI'],
+            '/schedule' => [ScheduleController::class, 'scheduleAPI'],
+            '/posts' => [TimelineController::class, 'postsAPI'],
         ];
 
         // Check if the route is an API route
-        if (isset($apiRoutes[$route])) {
-            list($controller, $action) = $apiRoutes[$route];
-            $controller = new $controller();
-            $controller->$action();
-            return;
+        if (strpos($route, '/api') === 0) {
+            $route = substr($route, 4);
+            $parts = explode('/', $route);
+            $route = '/' . $parts[1];
+            if (isset($apiRoutes[$route])) {
+                list($controller, $action) = $apiRoutes[$route];
+                $controller = new $controller();
+
+                if (isset($parts[2])) {
+                    $id = $parts[2];
+                    $controller->$action($id);
+                } else
+                    $controller->$action();
+
+                return;
+            }
         }
 
         // Check if userId is set in session
         if (isset($_SESSION['userId'])) {
-            if(!isset($_COOKIE['childId']) && $route != '/select' && $route != '/profile') {
+            if (!isset($_COOKIE['childId']) && $route != '/select' && $route != '/profile') {
                 header('Location: /select');
                 exit();
             }

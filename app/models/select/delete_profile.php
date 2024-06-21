@@ -1,16 +1,14 @@
 <?php
 require_once '../app/models/db.php';
 
-function deleteChildProfile() {
-    if (!isset($_GET['id'])) {
+function deleteChildProfile($id = null) {
+    if (!isset($id)) {
         http_response_code(400);
         echo json_encode(['error' => 'Missing required parameter: id']);
         return;
     }
 
     $conn = Database::getConnection();
-    $id = $conn->real_escape_string($_GET['id']);
-
     $conn->begin_transaction();
 
     try {
@@ -34,5 +32,5 @@ function deleteChildProfile() {
     }
 }
 
-deleteChildProfile();
+deleteChildProfile($id);
 ?>

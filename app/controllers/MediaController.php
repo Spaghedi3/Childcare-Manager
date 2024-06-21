@@ -13,15 +13,14 @@ class MediaController
         require_once '../app/views/footer.php';
     }
 
-    public function mediaAPI()
+    public function mediaAPI($id = null)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             require_once '../app/models/media/addFile.php';
         }
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $input = json_decode(file_get_contents('php://input'), true);
-            if (isset($_GET['id'])) {
-                $id = $_GET['id'];
+            if ($id) {
                 require_once '../app/models/media/getFile.php';
             } else {
                 require_once '../app/models/media/getFiles.php';

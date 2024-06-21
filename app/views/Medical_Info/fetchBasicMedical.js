@@ -1,6 +1,6 @@
 const fetchBasic = async () => {
     try {
-        const response = await fetch('/getBasic', {
+        const response = await fetch('/api/getBasic', {
             method: 'GET',
             credentials: 'include',
             headers: {

@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
 
         try {
-            const response = await fetch('/updateRelationship', {
+            const response = await fetch('/api/updateRelationship', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Fetch initial relationship data
     try {
-        const response = await fetch('/getRelationships');
+        const response = await fetch('/api/getRelationships');
         if (!response.ok) {
             throw new Error('Failed to fetch relationships information');
         }

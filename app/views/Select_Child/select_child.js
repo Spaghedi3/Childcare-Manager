@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const fetchChildProfiles = async () => {
         try {
-            const response = await fetch('/getProfiles', { method: 'GET' });
+            const response = await fetch('/api/getProfiles', { method: 'GET' });
             const responseText = await response.text();
             const data = JSON.parse(responseText);
             renderChildProfiles(data);
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const addChildProfile = async () => {
         try {
-            const response = await fetch('/addProfile', { method: 'POST' });
+            const response = await fetch('/api/addProfile', { method: 'POST' });
             const newProfile = await response.json();
             createProfileCard(newProfile, document.querySelectorAll('.child-profile-item').length);
         } catch (error) {
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const deleteChildProfile = async (id) => {
         try {
-            const response = await fetch(`/deleteProfile?id=${id}`, { method: 'GET', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' } });
+            const response = await fetch(`/api/deleteProfile/${id}`, { method: 'GET', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' } });
             const result = await response.json();
             if (result.success) {
                 fetchChildProfiles();
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const response = await fetch('/updateProfile', {
+            const response = await fetch('/api/updateProfile', {
                 method: 'POST',
                 headers: updateData.profile_picture ? {} : { 'Content-Type': 'application/json' },
                 body: formData
