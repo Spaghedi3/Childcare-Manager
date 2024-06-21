@@ -107,26 +107,13 @@ $sql = "CREATE TABLE Posts (
     content VARCHAR(255),
     datetime DATETIME NOT NULL,
     mediaId INT(6) UNSIGNED,
+    tags TEXT,
     FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE,
     FOREIGN KEY (child_id) REFERENCES Children(id) ON DELETE CASCADE
 )";
 
 if ($conn->query($sql) === TRUE) {
     echo "Table Posts created successfully" . "<br>";
-} else {
-    echo "Error creating table: " . $conn->error;
-}
-
-// Post_tags table
-$sql = "CREATE TABLE Post_Tags (
-    post_id INT(6) UNSIGNED,
-    relationship_id INT(6) UNSIGNED,
-    FOREIGN KEY (post_id) REFERENCES Posts(id) ON DELETE CASCADE,
-    FOREIGN KEY (relationship_id) REFERENCES Relationships(id) ON DELETE CASCADE
-)";
-
-if ($conn->query($sql) === TRUE) {
-    echo "Table Post_Tags created successfully" . "<br>";
 } else {
     echo "Error creating table: " . $conn->error;
 }

@@ -3,16 +3,7 @@
 require_once '../app/models/db.php';
 require_once '../app/models/apiUtils.php';
 
-// if (isset($_GET['type'])) {
-// 	$type = $_GET['type'];
-// 	if ($type != 'audio' && $type != 'video' && $type != 'document') {
-// 		$type = 'image';
-// 	}
-// } else {
-// 	$type = 'image';
-// }
-
-// TODO check type?
+$connection = Database::getConnection();
 
 if(isset($_SESSION['userId'])) {
     $userId = $_SESSION['userId'];
@@ -26,9 +17,9 @@ if (isset($_SESSION['childId'])) {
     sendResponse(['status' => 'error', 'message' => 'Child ID is required'], 400);
 }
 
-$connection = Database::getConnection();
-
-// TODO check if id exists
+if(!mediaExistsById($connection, $userId, $childId, $id)) {
+    sendResponse(['status' => 'error', 'message' => 'Media not found'], 404);
+}
 
 $stmt = $connection->prepare("SELECT title, datetime, media_link, type FROM media WHERE id = ?");
 $stmt->bind_param("i", $id);

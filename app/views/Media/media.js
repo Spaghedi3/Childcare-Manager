@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         formData.append('file', file);
 
         try {
-            const response = await fetch('/api/media?type=' + type, {
+            const response = await fetch('/api/media', {
                 method: 'POST',
                 body: formData,
                 credentials: 'include'
