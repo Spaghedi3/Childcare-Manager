@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 textarea.className = 'edit-input';
                 textarea.style.width = '100%';
                 textarea.style.height = '100px';
-                p.innerHTML = ''; // Clear existing content
-                p.textContent = title; // Set title text
-                p.appendChild(textarea); // Append textarea for editing
+                p.innerHTML = ''; 
+                p.textContent = title; 
+                p.appendChild(textarea); 
             }
         });
     };
@@ -23,15 +23,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         const inputs = section.querySelectorAll('.edit-input');
         const data = {};
 
-        const relationshipType = section.id; // Use section id directly
+        const relationshipType = section.id; 
         data['relationship_type'] = relationshipType;
 
         inputs.forEach(input => {
             const p = input.parentElement;
             const key = p.classList.contains('name') ? 'name' : 'contact';
             const newValue = input.value.trim();
-            p.textContent = `${p.textContent.split(': ')[0]}: ${newValue}`; // Reset paragraph text content
-            data[key] = newValue; // Store updated value in data object
+            p.textContent = `${p.textContent.split(': ')[0]}: ${newValue}`;
+            data[key] = newValue;
         });
 
         try {
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     editButtons.forEach(button => {
         button.addEventListener('click', (event) => {
             event.stopPropagation();
-            const section = button.closest('.relationship'); // Find closest .relationship parent
+            const section = button.closest('.relationship'); 
             if (!section) {
                 console.error('Parent section not found for button');
                 return;
@@ -73,7 +73,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     });
 
-    // Fetch initial relationship data
     try {
         const response = await fetch('/api/getRelationships');
         if (!response.ok) {
@@ -81,7 +80,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         const relationshipInfo = await response.json();
         console.log('Data:', JSON.stringify(relationshipInfo, null, 2));
-        updateFields(relationshipInfo); // Call updateFields function with fetched data
+        updateFields(relationshipInfo); 
     } catch (error) {
         console.error('Error fetching relationships information:', error);
     }
@@ -94,7 +93,7 @@ function updateFields(relationshipInfo) {
             const name = info.name;
             const contactInfo = info.contact_info;
 
-            const section = document.getElementById(relationshipType); // Find section by id
+            const section = document.getElementById(relationshipType); 
             if (!section) {
                 console.error(`Section not found for relationship type: ${relationshipType}`);
                 return;

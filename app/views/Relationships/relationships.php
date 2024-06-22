@@ -8,7 +8,7 @@
         <h2>Parents</h2>
         <p class="name">Names: [Parent 1], [Parent 2]</p>
         <p class="contact">Contact Information: [Phone numbers, email addresses]</p>
-        <p><a href="/timeline">See the memories with Parents</a></p>
+        <p><a href="/timeline?relationship_type=parents">See the memories with Parents</a></p>
         <button>Edit</button>
     </div>
 </div>
@@ -18,7 +18,7 @@
         <h2>Grandparents</h2>
         <p class="name">Names: [Grandparent 1], [Grandparent 2]</p>
         <p class="contact">Contact Information: [Phone numbers, email addresses]</p>
-        <p><a href="/timeline">See the memories with Grandparents</a></p>
+        <p><a href="/timeline?relationship_type=grandparents">See the memories with Grandparents</a></p>
         <button>Edit</button>
     </div>
 </div>
@@ -28,7 +28,7 @@
         <h2>Siblings</h2>
         <p class="name">Names: [Sibling 1], [Sibling 2]</p>
         <p class="contact">Contact Information: [Phone numbers, email addresses]</p>
-        <p><a href="/timeline">See the memories with the Siblings</a></p>
+        <p><a href="/timeline?relationship_type=siblings">See the memories with the Siblings</a></p>
         <button>Edit</button>
     </div>
 </div>
@@ -38,7 +38,7 @@
         <h2>Friends</h2>
         <p class="name">Names: [Friend 1], [Friend 2]</p>
         <p class="contact">Contact Information: [Phone numbers, email addresses]</p>
-        <p><a href="/timeline">See the memories with Friends</a></p>
+        <p><a href="/timeline?relationship_type=friends">See the memories with Friends</a></p>
         <button>Edit</button>
     </div>
 </div>

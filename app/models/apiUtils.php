@@ -33,9 +33,16 @@ function arrayToXml($data, $rootElement = 'response', $xml = null)
         $xml = new SimpleXMLElement("<{$rootElement}/>");
     }
     foreach ($data as $key => $value) {
+        $key = preg_replace('/[^a-z0-9_]/i', '_', $key);
         if (is_array($value)) {
+            if (is_numeric($key)) {
+                $key = 'item';
+            }
             arrayToXml($value, $key, $xml->addChild($key));
         } else {
+            if (is_numeric($key)) {
+                $key = 'item';
+            }
             $xml->addChild($key, htmlspecialchars($value));
         }
     }

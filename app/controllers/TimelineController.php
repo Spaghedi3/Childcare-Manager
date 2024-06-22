@@ -57,8 +57,8 @@ class TimelineController
         if (!isset($_SESSION['childId'])) {
             sendResponse(['status' => 'error', 'message' => 'Child ID is required'], 400);
         }
-
-        if ($id !== null && !is_numeric($id))
+        
+        if ($id !== null && !is_numeric($id) && $id !== 'undefined')
             sendResponse(['status' => 'error', 'message' => 'Post ID must be an integer'], 400);
 
         if (isset($input['title']) && !is_string($input['title']))

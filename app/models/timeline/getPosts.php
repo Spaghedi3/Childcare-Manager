@@ -14,7 +14,7 @@ if ($postId) {
 }
 
 if ($relationshipType) {
-    if (!in_array($relationshipType, ['parent', 'grandparent', 'sibling', 'friend'])) {
+    if (!in_array($relationshipType, ['parents', 'grandparents', 'siblings', 'friends'])) {
         sendResponse(['status' => 'error', 'message' => 'Invalid relationship type'], 400);
     }
     $query .= " AND FIND_IN_SET(?, p.tags)";
@@ -40,15 +40,8 @@ foreach ($posts as &$post) {
 }
 
 if ($postId) {
-    if ($posts) {
-        sendResponse($posts[0]);
-    } else {
+    if (!$posts) {
         sendResponse(['status' => 'error', 'message' => 'Specified post not found'], 404);
     }
-} else {
-    if ($posts) {
-        sendResponse($posts);
-    } else {
-        sendResponse(['status' => 'error', 'message' => 'No posts found'], 404);
-    }
-}
+} 
+sendResponse($posts);

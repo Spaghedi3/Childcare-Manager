@@ -27,7 +27,7 @@ if (isset($input['title']) && isset($input['content'])) {
     }
 
     if(isset($input['tags'])) {
-        $invalidTags = array_diff($input['tags'], ['parent', 'grandparent', 'sibling', 'friend']);
+        $invalidTags = array_diff($input['tags'], ['parents', 'grandparents', 'siblings', 'friends']);
 
         if (!empty($invalidTags)) {
             sendResponse(['status' => 'error', 'message' => 'Invalid tags: ' . implode(', ', $invalidTags)], 400);
@@ -53,9 +53,8 @@ if (isset($input['title']) && isset($input['content'])) {
 
     $stmt->bind_param($types, ...$params);
     $stmt->execute();
-    $stmt->close();
-
-    sendResponse(['status' => 'success', 'message' => 'Post added successfully']);
+    
+    sendResponse(['status' => 'success', 'message' => 'Post added successfully', 'id' => $stmt->insert_id]);
 } else {
     sendResponse(['status' => 'error', 'message' => 'Title and content are required'], 400);
 }
