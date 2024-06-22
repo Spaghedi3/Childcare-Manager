@@ -61,6 +61,12 @@ class Application
             '/posts' => [TimelineController::class, 'postsAPI'],
         ];
 
+        // Check if the route is the RSS feed
+        if ($route == '/timeline/rss') {
+            $route = '/api/posts';
+            $_GET['format'] = 'xml';
+        }
+
         // Check if the route is an API route
         if (strpos($route, '/api') === 0) {
             $route = substr($route, 4);

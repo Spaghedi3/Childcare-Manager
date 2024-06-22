@@ -3,7 +3,7 @@
     <div style="padding: 20px;">
         <form id="emailForm">
             <label for="email">New email:</label>
-            <input class="edit" type="text" id="email" name="email" value="<?php echo $email; ?>" required>
+            <input class="edit" type="email" id="email" name="email" value="<?php echo $email; ?>" required>
             <input type="submit" value="Confirm">
         </form>
     </div>

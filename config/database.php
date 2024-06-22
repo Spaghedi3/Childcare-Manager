@@ -161,6 +161,20 @@ if ($conn->query($sql) === TRUE) {
     echo "Error creating table: " . $conn->error;
 }
 
-$conn->close();
+// Create trigger to delete posts after media deletion
+$sql = "
+CREATE TRIGGER delete_post_after_media_delete
+AFTER DELETE ON Media
+FOR EACH ROW
+BEGIN
+    DELETE FROM Posts WHERE mediaId = OLD.id;
+END;
+";
 
-?>
+if ($conn->query($sql) === TRUE) {
+    echo "Trigger delete_post_after_media_delete created successfully" . "<br>";
+} else {
+    echo "Error creating trigger: " . $conn->error;
+}
+
+$conn->close();

@@ -1,22 +1,6 @@
 <?php
 
-require_once '../app/models/db.php';
-require_once '../app/models/auth.php';
-require_once '../app/models/apiUtils.php';
-
-$connection = Database::getConnection();
-$input = json_decode(file_get_contents('php://input'), true);
-
-if (!isset($_SESSION['userId'])) {
-    sendResponse(['status' => 'error', 'message' => 'Log in at /api/session'], 400);
-}
-
 $userId = $_SESSION['userId'];
-
-// Check if user exists
-if (!userExistsById($connection, $userId)) {
-    sendResponse(['status' => 'error', 'message' => 'User does not exist'], 400);
-}
 
 $responses = []; // Array to store responses
 

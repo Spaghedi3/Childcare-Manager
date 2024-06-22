@@ -1,22 +1,6 @@
 <?php
 
-require_once '../app/models/db.php';
-require_once '../app/models/auth.php';
-require_once '../app/models/apiUtils.php';
-
-$connection = Database::getConnection();
-
-$input = json_decode(file_get_contents('php://input'), true);
-
-if(isset($_SESSION['userId'])) {
-    $userId = $_SESSION['userId'];
-} else {
-    sendResponse(['status' => 'error', 'message' => 'Log in at /api/session'], 400);
-}
-// Check if user exists
-if (!userExistsById($connection, $userId)) {
-    sendResponse(['status' => 'error', 'message' => 'User does not exist'], 400);
-}
+$userId = $_SESSION['userId'];
 
 // Fetch children details
 $childrenQuery = $connection->prepare("SELECT id, name, birth_date, profile_picture_path FROM Children WHERE user_id = ?");
@@ -70,7 +54,7 @@ $mediaQuery = $connection->prepare("SELECT child_id, title, datetime, type, medi
 $mediaQuery->bind_param("i", $userId);
 $mediaQuery->execute();
 $mediaResult = $mediaQuery->get_result();
-$media= [];
+$media = [];
 while ($row = $mediaResult->fetch_assoc()) {
     $filePath = $row['media_link'];
     $fileType = mime_content_type($filePath);
@@ -92,5 +76,3 @@ $responseData = [
 
 // Send response
 sendResponse($responseData);
-
-?>

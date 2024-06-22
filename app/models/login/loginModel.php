@@ -1,23 +1,7 @@
 <?php
 
-require_once '../app/models/auth.php';
-require_once '../app/models/apiUtils.php';
-
-if (isset($_SESSION['userId'])) {
-    sendResponse(['status' => 'error', 'message' => 'Already logged in'], 400);
-}
-
-if (isset($_REQUEST['username'])) {
-    $username = $_REQUEST['username'];
-} else {
-    sendResponse(['status' => 'error', 'message' => 'Username is required'], 400);
-}
-
-if (isset($_REQUEST['password'])) {
-    $password = $_REQUEST['password'];
-} else {
-    sendResponse(['status' => 'error', 'message' => 'Password is required'], 400);
-}
+$username = $_REQUEST['username'];
+$password = $_REQUEST['password'];
 
 if ($userId = userExists($username)) {
     if (verifyPassword($userId, $password)) {

@@ -1,29 +1,9 @@
 <?php
 
-require_once '../app/models/db.php';
-require_once '../app/models/auth.php';
-require_once '../app/models/apiUtils.php';
-
-$connection = Database::getConnection();
-
-$input = json_decode(file_get_contents('php://input'), true);
-
-if(isset($_SESSION['userId'])) {
-    $userId = $_SESSION['userId'];
-} else {
-    sendResponse(['status' => 'error', 'message' => 'Log in at /api/session'], 400);
-}
-
-if(!isset($input['password'])){
-    sendResponse(['status' => 'error', 'message' => 'Password is required'], 400);
-}
+$userId = $_SESSION['userId'];
 $password = $input['password'];
 
-if (!userExistsById($connection, $userId)) {
-    sendResponse(['status' => 'error', 'message' => 'User does not exist'], 400);
-}
-
-if(!verifyPassword($userId, $password)){
+if (!verifyPassword($userId, $password)) {
     sendResponse(['status' => 'error', 'message' => 'Password is incorrect'], 400);
 }
 
@@ -31,6 +11,18 @@ $stmt = $connection->prepare("DELETE FROM users WHERE id = ?");
 $stmt->bind_param("i", $userId);
 
 if ($stmt->execute()) {
+    session_unset();
+    session_destroy();
+
+    if (ini_get("session.use_cookies")) {
+        $params = session_get_cookie_params();
+        setcookie(session_name(), '', time() - 42000,
+        $params["path"], $params["domain"],
+        $params["secure"], $params["httponly"]
+    );
+    }
+
+    setcookie('childId', '', time() - 3600, '/');
     sendResponse(['status' => 'success', 'message' => 'Account deleted successfully']);
 } else {
     sendResponse(['status' => 'error', 'message' => 'Failed to delete account'], 500);

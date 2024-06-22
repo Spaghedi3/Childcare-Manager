@@ -3,7 +3,7 @@
     <div style="padding: 20px;">
         <form id="deleteAccountForm">
             <label for="password">Password:</label>
-            <input class="edit" type="text" id="password" name="password">
+            <input class="edit" type="password" id="password" name="password" required minlength="8">
             <p>Are you sure you want to delete your account?</p>
             <input type="submit" value="Confirm">
         </form>

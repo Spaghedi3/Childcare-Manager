@@ -1,13 +1,6 @@
 <?php
 
-require_once '../app/models/apiUtils.php';
-
-if(!isset($_SESSION['userId'])) {
-    sendResponse(['status' => 'error', 'message' => 'You are not logged in!'], 400);
-}
-
 session_unset();
-
 session_destroy();
 
 // Delete the session cookie, if it exists

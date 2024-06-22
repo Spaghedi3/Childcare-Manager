@@ -1,25 +1,5 @@
 <?php
 
-require_once '../app/models/db.php';
-require_once '../app/models/apiUtils.php';
-
-$input = json_decode(file_get_contents('php://input'), true);
-
-if(isset($_SESSION['userId'])) {
-    $userId = $_SESSION['userId'];
-} else {
-    sendResponse(['status' => 'error', 'message' => 'Log in at /api/session'], 400);
-}
-
-if (isset($_SESSION['childId'])) {
-    $childId = $_SESSION['childId'];
-} else {
-    // TODO rename all messages to 'Get child ID from /api/children'
-    sendResponse(['status' => 'error', 'message' => 'Child ID is required'], 400);
-}
-
-$connection = Database::getConnection();
-
 $stmt = $connection->prepare("SELECT day, hour, type, items FROM Schedule WHERE user_id = ? AND child_id = ?");
 $stmt->bind_param("ii", $userId, $childId);
 

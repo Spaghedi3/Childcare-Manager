@@ -1,24 +1,5 @@
 <?php
 
-require_once '../app/models/db.php';
-require_once '../app/models/apiUtils.php';
-
-$input = json_decode(file_get_contents('php://input'), true);
-
-if(isset($_SESSION['userId'])) {
-    $userId = $_SESSION['userId'];
-} else {
-    sendResponse(['status' => 'error', 'message' => 'Log in at /api/session'], 400);
-}
-
-if (isset($_SESSION['childId'])) {
-    $childId = $_SESSION['childId'];
-} else {
-    sendResponse(['status' => 'error', 'message' => 'Child ID is required'], 400);
-}
-
-$connection = Database::getConnection();
-
 $schedule = $input['schedule'];
 
 foreach ($schedule as $day => $hours) {

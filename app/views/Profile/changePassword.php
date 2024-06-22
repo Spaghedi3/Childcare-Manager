@@ -3,11 +3,11 @@
 	<div style="padding: 20px;">
 		<form id="passwordForm">
 			<label for="oldPassword">Old password:</label>
-			<input class="edit" type="password" id="oldPassword" name="oldPassword" required>
+			<input class="edit" type="password" id="oldPassword" name="oldPassword" required minlength="8">
 			<label for="password">New password:</label>
-			<input class="edit" type="password" id="newPassword" name="newPassword" required>
+			<input class="edit" type="password" id="newPassword" name="newPassword" required minlength="8">
 			<label for="confirmPassword">Confirm password:</label>
-			<input class="edit" type="password" id="confirmPassword" name="confirmPassword" required>
+			<input class="edit" type="password" id="confirmPassword" name="confirmPassword" required minlength="8">
 			<input type="submit" value="Confirm">
 		</form>
 	</div>
