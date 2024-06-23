@@ -5,10 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(queryString);
             const id = urlParams.get('id')
 
-            let fetchUrl = '/api/children';
-            if (id) {
-                fetchUrl += `/${id}`;
-            }
+            let fetchUrl = '/api/children/';
+            if (id)
+                fetchUrl += `${id}`;
+            else
+                fetchUrl += getCookie('childId');
 
             const response = await fetch(fetchUrl, {
                 method: 'GET',
@@ -26,3 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     fetchChildProfile();
 });
+
+const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+};

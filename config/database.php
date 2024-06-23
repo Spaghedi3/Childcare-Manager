@@ -150,7 +150,6 @@ $sql = "CREATE TABLE Media (
     description VARCHAR(255),
     datetime DATETIME NOT NULL,
     type VARCHAR(50),
-    media_link VARCHAR(255),
     FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE,
     FOREIGN KEY (child_id) REFERENCES Children(id) ON DELETE CASCADE
 )";

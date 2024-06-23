@@ -38,17 +38,17 @@ $medicalInfoResult = $medicalInfoQuery->get_result();
 $medicalInfo = $medicalInfoResult->fetch_all(MYSQLI_ASSOC);
 
 // Fetch media details
-$mediaQuery = $connection->prepare("SELECT child_id, title, datetime, type, media_link FROM Media WHERE user_id = ?");
+$mediaQuery = $connection->prepare("SELECT id, child_id, title, description, datetime, type FROM Media WHERE user_id = ?");
 $mediaQuery->bind_param("i", $userId);
 $mediaQuery->execute();
 $mediaResult = $mediaQuery->get_result();
 $media = [];
 while ($row = $mediaResult->fetch_assoc()) {
-    $filePath = $row['media_link'];
+    $fileName = $row['id'] . '.' . $row['description'];
+    $filePath = '../media/' . $row['type'] . 's/' . $fileName;
     $fileType = mime_content_type($filePath);
     $fileData = base64_encode(file_get_contents($filePath));
     $row['media_data'] = "data:$fileType;base64,$fileData";
-    unset($row['media_link']);
     $media[] = $row;
 }
 

@@ -4,15 +4,7 @@ require_once '../app/models/apiUtils.php';
 
 function getChildProfile($id = null)
 {
-    if (!isset($id)) {
-        if (!isset($_COOKIE['childId'])) {
-            sendResponse(['error' => 'Select child at /api/select'], 400);
-        } else {
-            $childId = $_COOKIE['childId'];
-        }
-    } else {
-        $childId = $id;
-    }
+    $childId = $id;
 
     $conn = Database::getConnection();
     if ($conn->connect_error) {

@@ -29,6 +29,7 @@ function appendMedia(media, type, container) {
         audio.appendChild(source);
         var audioTitle = document.createElement('p');
         audioTitle.textContent = media.title;
+        mediaElement.appendChild(audioTitle);
         mediaElement.appendChild(audio);
     } else if (type === 'video') {
         var video = document.createElement('video');
