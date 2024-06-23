@@ -30,18 +30,6 @@ $postsQuery->execute();
 $postsResult = $postsQuery->get_result();
 $posts = $postsResult->fetch_all(MYSQLI_ASSOC);
 
-// Fetch post tags details
-$postTagsQuery = $connection->prepare("
-    SELECT Post_Tags.post_id, Post_Tags.relationship_id, Posts.title AS post_title, Relationships.name AS relationship_name
-    FROM Post_Tags
-    INNER JOIN Posts ON Post_Tags.post_id = Posts.id
-    INNER JOIN Relationships ON Post_Tags.relationship_id = Relationships.id
-    WHERE Posts.user_id = ?");
-$postTagsQuery->bind_param("i", $userId);
-$postTagsQuery->execute();
-$postTagsResult = $postTagsQuery->get_result();
-$postTags = $postTagsResult->fetch_all(MYSQLI_ASSOC);
-
 // Fetch medical info details
 $medicalInfoQuery = $connection->prepare("SELECT id, child_id, basic_info, emergency_contact_info, medical_conditions, medication, allergies, immunization_record, insurance_info, medical_history FROM Medical_Info WHERE user_id = ?");
 $medicalInfoQuery->bind_param("i", $userId);
@@ -69,7 +57,6 @@ $responseData = [
     'schedule' => $schedule,
     'relationships' => $relationships,
     'posts' => $posts,
-    'postTags' => $postTags,
     'medicalInfo' => $medicalInfo,
     'media' => $media
 ];
