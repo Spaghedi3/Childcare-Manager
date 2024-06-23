@@ -2,13 +2,6 @@
 require_once '../app/models/db.php';
 require_once '../app/models/apiUtils.php';
 
-// function sendResponse($data, $statusCode = 200) {
-//     header('Content-Type: application/json');
-//     http_response_code($statusCode);
-//     echo json_encode($data);
-//     exit();
-// }
-
 if(isset($_SESSION['userId'])) {
     $userId = $_SESSION['userId'];
 } else {
@@ -18,7 +11,7 @@ if(isset($_SESSION['userId'])) {
 if (isset($_SESSION['childId'])) {
     $childId = $_SESSION['childId'];
 } else {
-    sendResponse(['status' => 'error', 'message' => 'Child ID is required'], 400);
+    sendResponse(['status' => 'error', 'message' => 'Select child at /api/select'], 400);
 }
 
 function getMedicalInfo($userId, $childId) {

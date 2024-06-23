@@ -11,18 +11,32 @@ class MedicalController
         require_once '../app/views/footer.php';
     }
 
-    public function get_basic()
+    public function basic()
     {
         require_once '../app/models/medical/getBasic.php';
     }
 
-    public function updateMedicalInfo()
+    public function medicalAPI()
     {
-        require_once '../app/models/medical/updateMedicalInfo.php';
+        $this->validateSession();
+        if($_SERVER['REQUEST_METHOD'] === 'GET')
+        {
+            require_once '../app/models/medical/getMedicalInfo.php';
+        }
+        else if($_SERVER['REQUEST_METHOD'] === 'PATCH')
+        {
+            require_once '../app/models/medical/updateMedicalInfo.php';
+        }
+       
     }
 
-    public function getMedicalInfo()
+    private function validateSession()
     {
-        require_once '../app/models/medical/getMedicalInfo.php';   
+        if (!isset($_SESSION['userId']))
+            sendResponse(['status' => 'error', 'message' => 'Log in at /api/session'], 400);
+
+        if (!isset($_SESSION['childId']))
+            sendResponse(['status' => 'error', 'message' => 'Select child at /api/select'], 400);
     }
+
 }

@@ -13,6 +13,7 @@ class TimelineController
 
     public function postsAPI($id = null)
     {
+        $this->validateSession();
         require_once '../app/models/db.php';
         require_once '../app/models/apiUtils.php';
 
@@ -57,7 +58,7 @@ class TimelineController
         if (!isset($_SESSION['childId'])) {
             sendResponse(['status' => 'error', 'message' => 'Child ID is required'], 400);
         }
-        
+
         if ($id !== null && !is_numeric($id) && $id !== 'undefined')
             sendResponse(['status' => 'error', 'message' => 'Post ID must be an integer'], 400);
 
@@ -75,5 +76,14 @@ class TimelineController
         
         if (isset($_GET['relationship_type']) && !is_string($_GET['relationship_type']))
             sendResponse(['status' => 'error', 'message' => 'Relationship type must be a string'], 400);
+    }
+
+    private function validateSession()
+    {
+        if (!isset($_SESSION['userId']))
+            sendResponse(['status' => 'error', 'message' => 'Log in at /api/session'], 400);
+
+        if (!isset($_SESSION['childId']))
+            sendResponse(['status' => 'error', 'message' => 'Select child at /api/select'], 400);
     }
 }

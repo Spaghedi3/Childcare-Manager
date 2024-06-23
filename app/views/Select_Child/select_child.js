@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const fetchChildProfiles = async () => {
         try {
-            const response = await fetch('/api/getProfiles', { method: 'GET' });
+            const response = await fetch('/api/children', { method: 'GET' });
             const responseText = await response.text();
             const data = JSON.parse(responseText);
 
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         editButton.className = 'edit-name';
         editButton.textContent = 'Edit name';
         editButton.addEventListener('click', (event) => {
-            event.stopPropagation(); 
+            event.stopPropagation();
             toggleEditNameInput(newChildDiv, nameEditInput);
         });
         newChildDiv.appendChild(editButton);
@@ -75,13 +75,13 @@ document.addEventListener('DOMContentLoaded', () => {
         deleteButton.className = 'delete-child-button';
         deleteButton.textContent = 'x';
         deleteButton.addEventListener('click', (event) => {
-            event.stopPropagation(); 
+            event.stopPropagation();
             deleteChildProfile(newChildDiv.dataset.id);
         });
         newChildDiv.appendChild(deleteButton);
 
         newChildDiv.addEventListener('click', () => {
-            document.cookie = `childId=${profile.id}; path=/`; 
+            document.cookie = `childId=${profile.id}; path=/`;
             window.location.href = `/childProfile?id=${profile.id}`;
         });
 
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const addChildProfile = async () => {
         try {
-            const response = await fetch('/api/addProfile', { method: 'POST' });
+            const response = await fetch('/api/children', { method: 'POST' });
             const newProfile = await response.json();
             createProfileCard(newProfile, document.querySelectorAll('.child-profile-item').length);
         } catch (error) {
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const deleteChildProfile = async (id) => {
         try {
-            const response = await fetch(`/api/deleteProfile/${id}`, { method: 'GET', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' } });
+            const response = await fetch(`/api/children/${id}`, { method: 'DELETE', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' } });
             const result = await response.json();
             if (result.success) {
                 fetchChildProfiles();
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const childName = childDiv.querySelector('h3');
         const editButton = childDiv.querySelector('.edit-name');
         const id = childDiv.dataset.id;
-        
+
         if (nameInput.style.display === 'none') {
             childName.style.display = 'none';
             nameInput.style.display = 'block';
@@ -127,26 +127,22 @@ document.addEventListener('DOMContentLoaded', () => {
             childName.style.display = 'block';
             nameInput.style.display = 'none';
             editButton.textContent = 'Edit name';
-            updateChildProfile(id, { name: nameInput.value });
+            const updateData = {
+                id: id,
+              name: nameInput.value
+            };
+            updateChildProfile(id, updateData);
         }
     };
 
     const updateChildProfile = async (id, updateData) => {
-        let formData;
-
-        if (updateData.profile_picture) {
-            formData = new FormData();
-            formData.append('id', id);
-            formData.append('profile_picture', updateData.profile_picture);
-        } else {
-            formData = JSON.stringify({ id, ...updateData });
-        }
-
         try {
-            const response = await fetch('/api/updateProfile', {
-                method: 'POST',
-                headers: updateData.profile_picture ? {} : { 'Content-Type': 'application/json' },
-                body: formData
+            const response = await fetch(`/api/children/${id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updateData)
             });
             const result = await response.json();
             if (!result.success) {
@@ -161,17 +157,35 @@ document.addEventListener('DOMContentLoaded', () => {
         const input = document.createElement('input');
         input.type = 'file';
         input.accept = 'image/*';
-        input.onchange = (event) => {
+        input.onchange = async (event) => {
             const file = event.target.files[0];
             if (file) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    const childImg = childDiv.querySelector('img');
-                    childImg.src = e.target.result;
-                    const id = childDiv.dataset.id;
-                    updateChildProfile(id, { profile_picture: file });
-                };
-                reader.readAsDataURL(file);
+                try {
+                    const reader = new FileReader();
+                    reader.onload = async (e) => {
+                        const childImg = childDiv.querySelector('img');
+                        childImg.src = e.target.result;
+
+                        // to base64
+                        const imageData = e.target.result.split(',')[1];
+
+                        // update profile picture 
+                        const id = childDiv.dataset.id;
+                        const updateData = {
+                            id: id,
+                            profile_picture: {
+                                name: file.name,
+                                type: file.type,
+                                data: imageData
+                            }
+                        };
+
+                        await updateChildProfile(id, updateData);
+                    };
+                    reader.readAsDataURL(file);
+                } catch (error) {
+                    console.error('Error reading file or updating profile:', error);
+                }
             }
         };
         input.click();

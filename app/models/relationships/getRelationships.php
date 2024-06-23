@@ -11,7 +11,7 @@ if(isset($_SESSION['userId'])) {
 if (isset($_SESSION['childId'])) {
     $childId = $_SESSION['childId'];
 } else {
-    sendResponse(['status' => 'error', 'message' => 'Child ID is required'], 400);
+    sendResponse(['status' => 'error', 'message' => 'Select child at /api/select'], 400);
 }
 
 function getRelationships($userId, $childId) {

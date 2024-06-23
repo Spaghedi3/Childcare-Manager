@@ -10,23 +10,29 @@ class SelectController
         require_once '../app/views/Select_child/select_child.php';
         require_once '../app/views/footer.php';
     }
-    public function get_profiles()
+
+    public function childrenAPI($id = null)
     {
-        require_once '../app/models/select/get_profiles.php';
-    }
-    public function add_profile()
-    {
-        require_once '../app/models/select/add_profile.php';
-    }
-    public function update_profile()
-    {
-        header('Content-Type: application/json');
-        require_once '../app/models/select/update_profile.php';
-    }
-    public function delete_profile($id = null)
-    {
-        header('Content-Type: application/json');
-        require_once '../app/models/select/delete_profile.php';
+        $this->validateSession();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            require_once '../app/models/select/add_profile.php';
+        } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            if ($id) {
+                require_once '../app/models/select/getChildProfile.php';
+            } else
+                require_once '../app/models/select/get_profiles.php';
+        } else if ($_SERVER['REQUEST_METHOD'] === 'PATCH') {
+            require_once '../app/models/select/update_profile.php';
+        } else if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
+            require_once '../app/models/select/delete_profile.php';
+        } else {
+            sendResponse(['status' => 'error', 'message' => 'Invalid request method'], 405);
+        }
     }
 
+    private function validateSession()
+    {
+        if (!isset($_SESSION['userId']))
+            sendResponse(['status' => 'error', 'message' => 'Log in at /api/session'], 400);
+    }
 }

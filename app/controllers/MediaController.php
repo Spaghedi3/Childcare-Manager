@@ -55,7 +55,7 @@ class MediaController
             sendResponse(['status' => 'error', 'message' => 'Log in at /api/session'], 400);
 
         if (!isset($_SESSION['childId']))
-            sendResponse(['status' => 'error', 'message' => 'Child ID is required'], 400);
+            sendResponse(['status' => 'error', 'message' => 'Select child at /api/select'], 400);
 
         if ($id !== null && !is_numeric($id) && $id !== 'undefined')
             sendResponse(['status' => 'error', 'message' => 'Post ID must be an integer'], 400);

@@ -41,19 +41,9 @@ class Application
         ];
 
         $apiRoutes = [
-            // TODO Restful API routes
-            // TODO check userId in session for security reasons
-            '/getRelationships' => [RelationshipsController::class, 'getRelationships'],
-            '/updateRelationship' => [RelationshipsController::class, 'updateRelationship'],
-            '/getMedicalInfo' => [MedicalController::class, 'getMedicalInfo'],
-            '/updateMedicalInfo' => [MedicalController::class, 'updateMedicalInfo'],
-            '/getBasic' => [MedicalController::class, 'get_basic'],
-            '/getChildProfile' => [ChildProfileController::class, 'getChildProfile'],
-            '/getProfiles' => [SelectController::class, 'get_profiles'],
-            '/addProfile' => [SelectController::class, 'add_profile'],
-            '/updateProfile' => [SelectController::class, 'update_profile'],
-            '/deleteProfile' => [SelectController::class, 'delete_profile'],
-
+            '/relationship' => [RelationshipsController::class, 'relationshipsAPI'],
+            '/medical' => [MedicalController::class, 'medicalAPI'],
+            '/children' => [SelectController::class, 'childrenAPI'],
             '/session' => [LoginController::class, 'sessionAPI'],
             '/users' => [UserController::class, 'userAPI'],
             '/media' => [MediaController::class, 'mediaAPI'],

@@ -6,7 +6,7 @@ function getChildProfile($id = null)
 {
     if (!isset($id)) {
         if (!isset($_COOKIE['childId'])) {
-            sendResponse(['error' => 'Child ID is required'], 400);
+            sendResponse(['error' => 'Select child at /api/select'], 400);
         } else {
             $childId = $_COOKIE['childId'];
         }
@@ -19,7 +19,7 @@ function getChildProfile($id = null)
         sendResponse(['error' => 'Database connection failed: ' . $conn->connect_error], 500);
     }
 
-    $stmt = $conn->prepare("SELECT id, name, profile_picture_path FROM children WHERE id = ?");
+    $stmt = $conn->prepare("SELECT id, name, profile_picture_path, birth_date FROM children WHERE id = ?");
     $stmt->bind_param("i", $childId);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -27,12 +27,26 @@ function getChildProfile($id = null)
     if ($result->num_rows > 0) {
         $profile = $result->fetch_assoc();
 
+        // Calculate age from birth date
+        $birthDate = new DateTime($profile['birth_date']);
+        $currentDate = new DateTime();
+        $age = $currentDate->diff($birthDate)->y;
+
+        // Add age to the profile data
+        $profile['age'] = $age;
+
+        // Store childId in session
         $_SESSION['childId'] = $childId;
 
         sendResponse($profile);
     } else {
         sendResponse(['error' => 'Child profile not found'], 404);
     }
+
+    $stmt->close();
+    $conn->close();
 }
 
 getChildProfile($id);
+
+?>

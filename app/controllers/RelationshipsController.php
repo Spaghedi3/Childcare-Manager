@@ -11,13 +11,27 @@ class RelationshipsController
         require_once '../app/views/footer.php';
     }
 
-    public function updateRelationship()
+    public function relationshipsAPI()
     {
-        require_once '../app/models/relationships/updateRelationship.php';
+        $this->validateSession();
+        if($_SERVER['REQUEST_METHOD'] === 'GET')
+        {
+            require_once '../app/models/relationships/getRelationships.php';
+        }
+        else if($_SERVER['REQUEST_METHOD'] === 'PATCH')
+        {
+            require_once '../app/models/relationships/updateRelationship.php';
+        }
+       
     }
 
-    public function getRelationships()
+    private function validateSession()
     {
-        require_once '../app/models/relationships/getRelationships.php';
+        if (!isset($_SESSION['userId']))
+            sendResponse(['status' => 'error', 'message' => 'Log in at /api/session'], 400);
+
+        if (!isset($_SESSION['childId']))
+            sendResponse(['status' => 'error', 'message' => 'Select child at /api/select'], 400);
     }
+
 }

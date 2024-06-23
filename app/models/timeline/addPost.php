@@ -7,7 +7,6 @@ if (isset($input['title']) && isset($input['content'])) {
     $content = $input['content'];
     $datetime = date('Y-m-d H:i:s');
 
-    // Base query and types
     $query = "INSERT INTO posts (user_id, child_id, title, content, datetime";
     $values = "VALUES (?, ?, ?, ?, ?";
     $params = [$userId, $childId, $title, $content, $datetime];
@@ -40,7 +39,6 @@ if (isset($input['title']) && isset($input['content'])) {
         $types .= 's';
     }
 
-    // Complete the query
     $query .= ") ";
     $values .= ")";
     $query .= $values;

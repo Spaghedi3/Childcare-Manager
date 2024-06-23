@@ -43,7 +43,7 @@ class ScheduleController
             sendResponse(['status' => 'error', 'message' => 'Log in at /api/session'], 400);
 
         if (!isset($_SESSION['childId']))
-            sendResponse(['status' => 'error', 'message' => 'Child ID is required'], 400);
+            sendResponse(['status' => 'error', 'message' => 'Select child at /api/select'], 400);
     }
 
     private function validateSchedule($input)

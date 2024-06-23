@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(queryString);
             const id = urlParams.get('id')
 
-            let fetchUrl = '/api/getChildProfile';
+            let fetchUrl = '/api/children';
             if (id) {
                 fetchUrl += `/${id}`;
             }

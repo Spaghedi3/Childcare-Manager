@@ -49,6 +49,14 @@ const fetchPostTags = async (postId) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     const addButton = document.querySelector('#addMemoryButton');
+    const container = addButton.parentNode;
+    const rssButton = document.createElement('button');
+    rssButton.textContent = 'RSS';
+    rssButton.classList.add('rss-button');
+    rssButton.addEventListener('click', () => {
+        window.location.href = '/timeline/rss';
+    });
+    container.appendChild(rssButton);
 
     const createTimelineEntryCard = async (post = {}) => {
         const container = document.createElement('div');

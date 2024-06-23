@@ -2,8 +2,9 @@
 require_once '../app/models/db.php';
 require_once '../app/models/apiUtils.php';
 
-function updateChildProfile() {
-    $conn = Database::getConnection();  
+function updateChildProfile()
+{
+    $conn = Database::getConnection();
     $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 
     if (strpos($contentType, 'application/json') === 0) {
@@ -18,52 +19,31 @@ function updateChildProfile() {
             return;
         }
 
-        $id = $data['id'];
-        $fields = [];
+        // Check if profile_picture field is provided and is not empty
+        if (isset($data['profile_picture']) && !empty($data['profile_picture'])) {
+            $profilePicture = $data['profile_picture'];
 
-        if (isset($data['name'])) {
-            $name = $data['name'];
-            $fields[] = "name=?";
-        }
+            // Validate profile_picture format
+            if (!isset($profilePicture['name']) || !isset($profilePicture['type']) || !isset($profilePicture['data'])) {
+                sendResponse(['error' => 'Invalid profile_picture format'], 400);
+                return;
+            }
 
-        if (empty($fields)) {
-            sendResponse(['error' => 'No valid fields to update'], 400);
-            return;
-        }
+            // Handle profile picture update
+            $id = $data['id'];
+            $uploadDir = '../media/images/';
+            $filename = uniqid() . '.jpg'; // Generate unique filename
+            $uploadFile = $uploadDir . $filename;
 
-        $sql = "UPDATE children SET " . implode(", ", $fields) . " WHERE id=?";
-        $stmt = $conn->prepare($sql);
-        if (!$stmt) {
-            sendResponse(['error' => 'Database error'], 500);
-            return;
-        }
+            $imageData = base64_decode($profilePicture['data']);
 
-        if (isset($name)) {
-            $stmt->bind_param('si', $name, $id);
-        } else {
-            $stmt->bind_param('i', $id);
-        }
+            if (!file_put_contents($uploadFile, $imageData)) {
+                sendResponse(['error' => 'Failed to save image'], 500);
+                return;
+            }
 
-    } else {
-        if (!isset($_POST['id']) || !isset($_FILES['profile_picture'])) {
-            sendResponse(['error' => 'Missing required fields'], 400);
-            return;
-        }
-
-        $id = $_POST['id'];
-        $uploadDir = '../media/images/';
-        $uploadFile = $uploadDir . basename($_FILES['profile_picture']['name']);
-        
-        // Check if file is an image
-        $check = getimagesize($_FILES['profile_picture']['tmp_name']);
-        if($check === false) {
-            sendResponse(['error' => 'File is not an image'], 400);
-            return;
-        }
-
-        // Move the uploaded file
-        if (move_uploaded_file($_FILES['profile_picture']['tmp_name'], $uploadFile)) {
-            $profilePicturePath = '/media/images/' . basename($_FILES['profile_picture']['name']);
+            // Update profile_picture_path in database
+            $profilePicturePath = '/media/images/' . $filename;
             $sql = "UPDATE children SET profile_picture_path=? WHERE id=?";
             $stmt = $conn->prepare($sql);
             if (!$stmt) {
@@ -71,19 +51,49 @@ function updateChildProfile() {
                 return;
             }
             $stmt->bind_param('si', $profilePicturePath, $id);
-        } else {
-            sendResponse(['error' => 'Failed to upload image'], 500);
+
+            if ($stmt->execute()) {
+                sendResponse(['success' => true]);
+            } else {
+                sendResponse(['error' => 'Failed to update profile picture'], 500);
+            }
+
+            $stmt->close();
+            $conn->close();
+        }
+
+        // Check if name field is provided and update it
+        if (isset($data['name'])) {
+            $id = $data['id'];
+            $name = $data['name'];
+
+            $sql = "UPDATE children SET name=? WHERE id=?";
+            $stmt = $conn->prepare($sql);
+            if (!$stmt) {
+                sendResponse(['error' => 'Database error'], 500);
+                return;
+            }
+            $stmt->bind_param('si', $name, $id);
+
+            if ($stmt->execute()) {
+                sendResponse(['success' => true]);
+            } else {
+                sendResponse(['error' => 'Failed to update name'], 500);
+            }
+
+            $stmt->close();
+            $conn->close();
+        }
+
+        // If neither profile_picture nor name fields were provided
+        if (!isset($data['profile_picture']) && !isset($data['name'])) {
+            sendResponse(['error' => 'No valid fields to update'], 400);
             return;
         }
-    }
 
-    if ($stmt->execute()) {
-        echo json_encode(['success' => true]);
     } else {
-        sendResponse(['error' => 'Failed to update child profile'], 500);
+        sendResponse(['error' => 'Unsupported Content-Type'], 400);
     }
-    $stmt->close();
-    $conn->close();
 }
 
 updateChildProfile();
