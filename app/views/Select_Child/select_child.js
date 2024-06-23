@@ -76,10 +76,32 @@ document.addEventListener('DOMContentLoaded', () => {
         deleteButton.textContent = 'x';
         deleteButton.addEventListener('click', (event) => {
             event.stopPropagation();
-            if (confirm("Are you sure you want to delete this profile?")) {
-                deleteChildProfile(newChildDiv.dataset.id);
-            }
+            openModal();
         });
+
+        function openModal() {
+            const modal = document.getElementById('confirmModal');
+            modal.style.display = 'block';
+        
+            const confirmDeleteButton = document.getElementById('confirmDelete');
+            const cancelDeleteButton = document.getElementById('cancelDelete');
+        
+            confirmDeleteButton.addEventListener('click', () => {
+                deleteChildProfile(newChildDiv.dataset.id);
+                closeModal();
+            });
+        
+            cancelDeleteButton.addEventListener('click', () => {
+                closeModal();
+            });
+        
+            function closeModal() {
+                modal.style.display = 'none';
+                confirmDeleteButton.removeEventListener('click', confirmDeleteClick);
+                cancelDeleteButton.removeEventListener('click', cancelDeleteClick);
+            }
+        }
+        
         newChildDiv.appendChild(deleteButton);
 
         newChildDiv.addEventListener('click', () => {

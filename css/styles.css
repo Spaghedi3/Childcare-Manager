@@ -16,7 +16,10 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.medical_info_container, .relationship-container, .timeline-container, .timeline-entry {
+.medical_info_container,
+.relationship-container,
+.timeline-container,
+.timeline-entry {
   max-width: 600px;
 }
 
@@ -98,7 +101,7 @@ body {
   margin-top: 10px;
 }
 
- .edit-name{
+.edit-name {
   margin-bottom: 10px;
 }
 
@@ -131,7 +134,8 @@ body {
 .delete-child-button:hover {
   background-color: gray;
 }
-.relationship-header{
+
+.relationship-header {
   padding-left: 1em;
 }
 
@@ -150,7 +154,8 @@ label {
   box-sizing: border-box;
 }
 
-input[type="submit"], .btn {
+input[type="submit"],
+.btn {
   width: 100%;
   background-color: #007F73;
   color: #fff;
@@ -161,7 +166,8 @@ input[type="submit"], .btn {
   cursor: pointer;
 }
 
-input[type="submit"]:hover, .btn:hover {
+input[type="submit"]:hover,
+.btn:hover {
   background-color: #007f72dd;
 }
 
@@ -176,7 +182,7 @@ button {
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: normal;
@@ -218,6 +224,7 @@ a {
   text-decoration: none;
   color: #007F73;
 }
+
 * {
   box-sizing: border-box;
 }
@@ -233,91 +240,128 @@ a {
   z-index: 1000;
 }
 
-.nav > .nav-header {
+.nav>.nav-header {
   display: inline;
 }
 
-.nav  a{
+.nav a {
   color: white;
 }
 
-.nav > .nav-header > .nav-title {
+.nav>.nav-header>.nav-title {
   display: inline-block;
   font-size: 22px;
   color: #fff;
   padding: 10px 10px 10px 10px;
 }
 
-.nav > .nav-btn {
+.nav>.nav-btn {
   display: none;
 }
 
-.nav > .nav-links {
+.nav>.nav-links {
   display: inline;
   float: right;
   font-size: 18px;
 }
 
-.nav > .nav-links > a {
+.nav>.nav-links>a {
   display: inline-block;
   padding: 13px 10px 13px 10px;
   text-decoration: none;
   color: #efefef;
 }
 
-.nav > .nav-links > a:hover {
+.nav>.nav-links>a:hover {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.nav > #nav-check {
+.nav>#nav-check {
   display: none;
 }
 
-img{
+img {
   width: 100%;
   height: auto;
 }
 
-.child-img-div-welcome > #child-image{
+.child-img-div-welcome>#child-image {
   width: 250px;
   height: 250px;
   float: left;
   margin-right: 1em;
   margin-bottom: 2.9em;
 }
-.child-img-div > img{
+
+.child-img-div>img {
   width: 150px;
   height: 150px;
 }
 
-#getStarted{
+#getStarted {
   margin-top: -10px;
 }
 
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: white;
+  width: 300px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal-buttons {
+  text-align: right;
+  margin-top: 10px;
+}
+
+.modal-buttons button {
+  margin-left: 10px;
+}
+
 @media (max-width:990px) {
-  .nav > .nav-btn {
+  .nav>.nav-btn {
     display: inline-block;
     position: absolute;
     right: 0px;
     top: 0px;
   }
-  .nav > .nav-btn > label {
+
+  .nav>.nav-btn>label {
     display: inline-block;
     width: 50px;
     height: 50px;
     padding: 13px;
   }
-  .nav > .nav-btn > label:hover,
-  .nav  #nav-check:checked ~ .nav-btn > label {
+
+  .nav>.nav-btn>label:hover,
+  .nav #nav-check:checked~.nav-btn>label {
     background-color: rgba(0, 0, 0, 0.3);
   }
-  .nav > .nav-btn > label > span {
+
+  .nav>.nav-btn>label>span {
     display: block;
     width: 25px;
     height: 10px;
     border-top: 2px solid #eee;
   }
-  .nav > .nav-links {
+
+  .nav>.nav-links {
     position: absolute;
     display: block;
     width: 100%;
@@ -326,20 +370,23 @@ img{
     overflow-y: hidden;
     top: 50px;
     left: 0px;
-    height: calc(100vh - 50px); 
+    height: calc(100vh - 50px);
   }
-  .nav > .nav-links > a {
+
+  .nav>.nav-links>a {
     display: block;
-    width: 
-    100%;
+    width:
+      100%;
     padding: 13px 10px;
     color: #efefef;
     text-decoration: none;
   }
-  .nav > #nav-check:not(:checked) ~ .nav-links {
-    height: 0; 
+
+  .nav>#nav-check:not(:checked)~.nav-links {
+    height: 0;
   }
-  .nav > #nav-check:checked ~ .nav-links {
+
+  .nav>#nav-check:checked~.nav-links {
     overflow-y: auto;
   }
 }
