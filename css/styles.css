@@ -278,9 +278,20 @@ img{
   height: auto;
 }
 
+.child-img-div-welcome > #child-image{
+  width: 250px;
+  height: 250px;
+  float: left;
+  margin-right: 1em;
+  margin-bottom: 2.9em;
+}
 .child-img-div > img{
   width: 150px;
   height: 150px;
+}
+
+#getStarted{
+  margin-top: -10px;
 }
 
 @media (max-width:990px) {

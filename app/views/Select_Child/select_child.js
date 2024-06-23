@@ -76,7 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
         deleteButton.textContent = 'x';
         deleteButton.addEventListener('click', (event) => {
             event.stopPropagation();
-            deleteChildProfile(newChildDiv.dataset.id);
+            if (confirm("Are you sure you want to delete this profile?")) {
+                deleteChildProfile(newChildDiv.dataset.id);
+            }
         });
         newChildDiv.appendChild(deleteButton);
 
@@ -129,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             editButton.textContent = 'Edit name';
             const updateData = {
                 id: id,
-              name: nameInput.value
+                name: nameInput.value
             };
             updateChildProfile(id, updateData);
         }
