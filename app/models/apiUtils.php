@@ -8,6 +8,9 @@ function getResponseType()
         if ($responseType === 'xml') {
             return 'xml';
         }
+        if ($responseType === 'rss') {
+            return 'rss';
+        }
     }
     return 'json';
 }
@@ -20,6 +23,10 @@ function sendResponse($data, $statusCode = 200)
     if ($responseType == 'xml') {
         header('Content-Type: application/xml');
         echo arrayToXml($data);
+    } else
+    if ($responseType == 'rss') {
+        header('Content-Type: application/xml');
+        echo arrayToXml($data, 'rss');
     } else {
         header('Content-Type: application/json');
         echo json_encode($data);
@@ -32,18 +39,26 @@ function arrayToXml($data, $rootElement = 'response', $xml = null)
     if ($xml === null) {
         $xml = new SimpleXMLElement("<{$rootElement}/>");
     }
+    if($rootElement === 'rss') {
+        $xml->addAttribute('version', '2.0');
+        $xml->addChild('channel');
+        $child = $xml->channel;
+    }
+    else {
+        $child = $xml;
+    }
     foreach ($data as $key => $value) {
         $key = preg_replace('/[^a-z0-9_]/i', '_', $key);
         if (is_array($value)) {
             if (is_numeric($key)) {
                 $key = 'item';
             }
-            arrayToXml($value, $key, $xml->addChild($key));
+            arrayToXml($value, $key, $child->addChild($key));
         } else {
             if (is_numeric($key)) {
                 $key = 'item';
             }
-            $xml->addChild($key, htmlspecialchars($value));
+            $child->addChild($key, htmlspecialchars($value));
         }
     }
     return $xml->asXML();
@@ -71,7 +86,7 @@ function mediaExistsById($connection, $userId, $childId, $mediaId)
     $mediaStmt->fetch();
     $mediaStmt->close();
 
-    if ($mediaCount === 0) 
+    if ($mediaCount === 0)
         return false;
     return true;
 }
@@ -86,7 +101,7 @@ function postExistsById($connection, $userId, $childId, $postId)
     $postStmt->fetch();
     $postStmt->close();
 
-    if ($postCount === 0) 
+    if ($postCount === 0)
         return false;
     return true;
 }

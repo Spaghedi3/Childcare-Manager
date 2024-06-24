@@ -54,7 +54,7 @@ class Application
         // Check if the route is the RSS feed
         if ($route == '/timeline/rss') {
             $route = '/api/posts';
-            $_GET['format'] = 'xml';
+            $_GET['format'] = 'rss';
         }
 
         // Check if the route is an API route
